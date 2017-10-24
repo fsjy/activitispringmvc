@@ -1,4 +1,4 @@
-package com.mkyong.web.model;
+package com.activiti.model;
 
 public class SearchCriteria {
 

@@ -22,5 +22,6 @@ var ACTIVITI = ACTIVITI || {};
 
 ACTIVITI.CONFIG = {
 	// 'contextRoot' : '/activiti-explorer/service',
-    'contextRoot' : '/acticiti-springmvc-module/service',
+    // 'contextRoot' : '/acticiti-springmvc-module/service',
+    'contextRoot' : '/activiti/service',
 };

@@ -1,20 +1,18 @@
-package com.mkyong.web.controller;
+package com.activiti.controllers;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.annotation.PostConstruct;
-
+import com.activiti.jsonview.Views;
+import com.activiti.model.AjaxResponseBody;
+import com.activiti.model.SearchCriteria;
+import com.activiti.model.User;
+import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fasterxml.jackson.annotation.JsonView;
-import com.mkyong.web.jsonview.Views;
-import com.mkyong.web.model.AjaxResponseBody;
-import com.mkyong.web.model.SearchCriteria;
-import com.mkyong.web.model.User;
+import javax.annotation.PostConstruct;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 public class AjaxController {

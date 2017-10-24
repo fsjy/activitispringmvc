@@ -1,9 +1,9 @@
-package com.mkyong.web.model;
+package com.activiti.model;
+
+import com.activiti.jsonview.Views;
+import com.fasterxml.jackson.annotation.JsonView;
 
 import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonView;
-import com.mkyong.web.jsonview.Views;
 
 public class AjaxResponseBody {
 
