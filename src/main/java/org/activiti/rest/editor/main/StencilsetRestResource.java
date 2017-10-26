@@ -29,9 +29,14 @@ public class StencilsetRestResource {
   
   @RequestMapping(value="/editor/stencilset", method = RequestMethod.GET, produces = "application/json;charset=utf-8")
   public @ResponseBody String getStencilset() {
-    InputStream stencilsetStream = this.getClass().getClassLoader().getResourceAsStream("stencilset.json");
+    InputStream stencilsetStream1 = this.getClass().getClassLoader().getResourceAsStream("stencilset.json");
+    //InputStream stencilsetStream2 = this.getClass().getClassLoader().getResourceAsStream("stencilset2.json");
+
+
     try {
-      return IOUtils.toString(stencilsetStream, "utf-8");
+      return IOUtils.toString(stencilsetStream1, "utf-8");
+              //.concat(IOUtils.toString(stencilsetStream2, "utf-8"));
+
     } catch (Exception e) {
       throw new ActivitiException("Error while loading stencil set", e);
     }

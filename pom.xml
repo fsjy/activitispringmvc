@@ -20,7 +20,7 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>3.8.1</version>
+      <version>4.12</version>
       <scope>test</scope>
     </dependency>
 
@@ -138,7 +138,7 @@
           <version>${activiti.version}</version>
       </dependency>
 
-      <!--　■ 检查Web使用的内容是否在rest中 Added by YL 2017／10／19 ■ -->
+      <!--　■ 检查Web使用的内容是否在rest中 Added by Yanglu 2017／10／19 ■ -->
       <dependency>
           <groupId>org.activiti</groupId>
           <artifactId>activiti-rest</artifactId>
@@ -291,11 +291,14 @@
           <artifactId>xmlgraphics-commons</artifactId>
           <version>1.2</version>
       </dependency>
+
+      <!--
       <dependency>
           <groupId>batik</groupId>
           <artifactId>batik-awt-util</artifactId>
           <version>1.7</version>
       </dependency>
+      -->
 
   </dependencies>
 

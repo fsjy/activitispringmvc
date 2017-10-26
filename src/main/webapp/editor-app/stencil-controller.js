@@ -64,10 +64,22 @@ angular.module('activitiModeler')
              */
             $http({method: 'GET', url: KISBPM.URL.getStencilSet()}).success(function (data, status, headers, config) {
 
-            	var quickMenuDefinition = ['UserTask', 'EndNoneEvent', 'ExclusiveGateway', 
+                /*
+
+
+            	var quickMenuDefinition = ['UserTask', 'EndNoneEvent', 'ExclusiveGateway',
             	                           'CatchTimerEvent', 'ThrowNoneEvent', 'TextAnnotation',
             	                           'SequenceFlow', 'Association'];
-            	var ignoreForPaletteDefinition = ['SequenceFlow', 'MessageFlow', 'Association', 'DataAssociation', 'DataStore', 'SendTask'];
+
+            	                           */
+
+                // Modified by Yanglu 2017.10.25
+                // 为控制显示控件旁的icon的数量，此处减少为3个。
+                var quickMenuDefinition = ['EndNoneEvent', 'ExclusiveGateway',
+
+                    'SequenceFlow'];
+
+                var ignoreForPaletteDefinition = ['SequenceFlow', 'MessageFlow', 'Association', 'DataAssociation', 'DataStore', 'SendTask'];
             	var quickMenuItems = [];
             	
             	var morphRoles = [];
@@ -523,6 +535,10 @@ angular.module('activitiModeler')
             };
             
             $scope.quickAddItem = function(newItemId) {
+
+
+                alert("add Item");
+
             	$scope.safeApply(function () {
             		
             		var shapes = $rootScope.editor.getSelection();

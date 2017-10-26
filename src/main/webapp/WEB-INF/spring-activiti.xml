@@ -6,7 +6,7 @@
         <property name="dataSource" ref="dataSource" />
         <property name="transactionManager" ref="transactionManager" />
         <!-- true：自动建表自动升级。数据连接无问题，在datasource中设置的schema中自动建表
-        2017/10/19 By Yang.lu
+        2017/10/19 By Yanglu
         <property name="databaseSchemaUpdate" value="true" />
         -->
         <property name="databaseSchemaUpdate" value="false" />
@@ -31,6 +31,16 @@
     <bean id="identityService" factory-bean="processEngine"
           factory-method="getIdentityService" />
 
+    <!--
+        Add by Yanglu 2017.10.26
+        使用activiti-rest服务，需要注入formService 在FormDataResource中使用
+    -->
+    <bean id="formService" factory-bean="processEngine"
+          factory-method="getFormService" />
+
+
+
+
     <bean id="transactionManager"
           class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource" />
@@ -43,4 +53,17 @@
         <property name="password" value="activiti" />
         <property name="defaultAutoCommit" value="false" />
     </bean>
+
+
+    <!-- Add by Yanglu 2017.10.26
+        使用activiti-rest服务
+    -->
+    <bean id="restResponseFactory" class="org.activiti.rest.service.api.RestResponseFactory"/>
+
+    <!-- Add by Yanglu 2017.10.26
+        启动出错，缺少此class的definition
+    -->
+    <bean id="contentTypeResolver" class="org.activiti.rest.common.application.DefaultContentTypeResolver"/>
+
+
 </beans>

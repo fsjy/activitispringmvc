@@ -154,9 +154,11 @@
     function display(data) {
 
         //alert(data.result[0].username);
-        $('#email').val(data.result[0].email);
-        $('#phone').val(data.result[0].phone);
 
+        if (data.result != null) {
+            $('#email').val(data.result[0].email);
+            $('#phone').val(data.result[0].phone);
+        }
         var json = "<h4>Ajax Response</h4><pre>"
             + JSON.stringify(data, null, 4) + "</pre>";
         $('#feedback').html(json);
