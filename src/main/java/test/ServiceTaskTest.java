@@ -185,7 +185,7 @@ public class ActivitiTest {
 
 
 
-        runtimeService.startProcessInstanceByKey("my-process", variables);
+        //runtimeService.startProcessInstanceByKey("my-process", variables);
 
         System.out.println("Number of process instances: " + runtimeService.createProcessInstanceQuery().count());
 

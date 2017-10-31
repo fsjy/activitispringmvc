@@ -3,11 +3,65 @@
   <process id="my-process" isExecutable="true">
     <startEvent id="start"></startEvent>
     <endEvent id="end"></endEvent>
-    <serviceTask id="servicetask1" name="CRFService" activiti:class="com.activiti.service.CrfDelegateService"></serviceTask>
-    <serviceTask id="servicetask2" name="DICService" activiti:class="com.activiti.service.DicDelegateService"></serviceTask>
+
+
+
+
+    <!--
+    ■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+    ■ Add by Yanglu 2017.10.30 ■
+    ■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+
+
+    1. 使用acvitivi:expression方式进行service调用
+
+    【前提】：
+      A）crfServiceResolver在xml中注入为spring的bean
+      B）返回的activiti:resultVariable="resultStr" 中resultStr需为String类型(其他类型暂时报错，如何解决待查）
+
+    2. 按照flow调用每一个serviceTask时，前一个resultVariable可以作为后一个方法的input，需要采用UEL表达式进行书写
+       如${className.getMethod()}代表一个注入为className的springBean的getMethod()方法的调用
+
+    3.
+
+
+    -->
+    <serviceTask id="servicetask1" name="CRFService"
+                 activiti:expression="#{crfServiceResolver.getLocalTaskServiceResult(null)}"
+                 activiti:resultVariable="resultStr">
+
+
+    </serviceTask>
+
+    <serviceTask id="servicetask2" name="CRFService"
+                 activiti:expression="#{crfServiceResolver.getLocalTaskServiceResult(resultStr)}"
+                 activiti:resultVariable="resultStr">
+
+
+    </serviceTask>
+    <serviceTask id="servicetask3" name="CRFService"
+                 activiti:expression="#{crfServiceResolver.getLocalTaskServiceResult(resultStr)}"
+                 activiti:resultVariable="resultStr">
+
+
+    </serviceTask>
+
+    <serviceTask id="servicetask4"
+                 name="DICService"
+                 activiti:class="com.bmsmart.service.activiti.DicDelegateService">
+      <extensionElements>
+        <activiti:field name="text" expression="${resultStr}" />
+      </extensionElements>
+    </serviceTask>
+
+
+
+
+
     <sequenceFlow id="flow1" sourceRef="start" targetRef="servicetask1"></sequenceFlow>
     <sequenceFlow id="flow2" sourceRef="servicetask1" targetRef="servicetask2"></sequenceFlow>
-    <sequenceFlow id="flow3" sourceRef="servicetask2" targetRef="end"></sequenceFlow>
+    <sequenceFlow id="flow3" sourceRef="servicetask2" targetRef="servicetask3"></sequenceFlow>
+    <sequenceFlow id="flow4" sourceRef="servicetask3" targetRef="end"></sequenceFlow>
   </process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_my-process">
     <bpmndi:BPMNPlane bpmnElement="my-process" id="BPMNPlane_my-process">
