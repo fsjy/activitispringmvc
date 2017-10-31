@@ -74,7 +74,14 @@
     <bean id="crfServiceResolver" class="com.bmsmart.service.local.impl.LocalTaskServiceImpl"/>
 
 
-
+    <!--
+   ️Add by Yanglu 2017.10.31
+    实现JavaDelegate接口的Class交给spring管理，以便在其中注入服务Class
+    -->
+    <bean id="CRFDelegateService" class="com.bmsmart.service.activiti.CrfDelegateService"/>
+    <bean id="DICDelegateService" class="com.bmsmart.service.activiti.DicDelegateService"/>
+    <bean id="ANNDelegateService" class="com.bmsmart.service.activiti.AnnDelegateService"/>
+    <bean id="NBMDelegateService" class="com.bmsmart.service.activiti.NbmDelegateService"/>
 
 
 </beans>

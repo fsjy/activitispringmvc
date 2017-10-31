@@ -3,11 +3,12 @@
   <process id="my-process" isExecutable="true">
     <startEvent id="start"></startEvent>
     <endEvent id="end"></endEvent>
-    <serviceTask id="servicetask2" name="CRFService" activiti:class="com.bmsmart.service.activiti.CrfDelegateService"></serviceTask>
-    <serviceTask id="servicetask3" name="DICService" activiti:class="com.bmsmart.service.activiti.DicDelegateService"></serviceTask>
-    <serviceTask id="servicetask4" name="DICService" activiti:class="com.bmsmart.service.activiti.DicDelegateService"></serviceTask>
-    <serviceTask id="servicetask5" name="AnnService" activiti:class="com.bmsmart.service.activiti.AnnDelegateService"></serviceTask>
-    <serviceTask id="servicetask6" name="NbmService" activiti:class="com.bmsmart.service.activiti.NbmDelegateService"></serviceTask>
+    <serviceTask id="servicetask2" name="CRFService" activiti:delegateExpression="${CRFDelegateService}"></serviceTask>
+    <serviceTask id="servicetask3" name="DICService" activiti:delegateExpression="${DICDelegateService}"></serviceTask>
+    <serviceTask id="servicetask4" name="DICService" activiti:delegateExpression="${DICDelegateService}"></serviceTask>
+    <serviceTask id="servicetask5" name="ANNService" activiti:delegateExpression="${ANNDelegateService}"></serviceTask>
+    <serviceTask id="servicetask6" name="NBMService" activiti:delegateExpression="${NBMDelegateService}"></serviceTask>
+
     <sequenceFlow id="flow1" sourceRef="start" targetRef="servicetask1"></sequenceFlow>
     <sequenceFlow id="flow2" sourceRef="servicetask1" targetRef="parallelgateway1"></sequenceFlow>
     <serviceTask id="servicetask1" name="SelectService" activiti:class="com.bmsmart.service.activiti.SelectDelegateService"></serviceTask>
