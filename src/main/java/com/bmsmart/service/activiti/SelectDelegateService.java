@@ -8,7 +8,7 @@ import org.activiti.engine.delegate.JavaDelegate;
  *  Add by Yanglu 2017.10.30
  *
  */
-public class selectDelegateService implements JavaDelegate {
+public class SelectDelegateService extends DelegateService implements JavaDelegate {
 
     /**
      * 需要实现activiti的execute接口
@@ -21,14 +21,15 @@ public class selectDelegateService implements JavaDelegate {
     public void execute(DelegateExecution execution) throws Exception {
 
 
-        System.out.println("-- selectDelegateService START -- : " + execution.toString());
+        System.out.println("-- SelectDelegateService START -- : " + execution.toString());
 
         int input = 0;
-        System.out.println("setVariable input == " + input);
-        execution.setVariable("input", input);
-        execution.setVariable("inputSecond", 2);
 
-        System.out.println("-- selectDelegateService END   -- : " + execution.toString());
+        execution.setVariable("input", input);
+
+        System.out.println("setVariable input == " + input);
+
+        ex(execution);
 
 
     }

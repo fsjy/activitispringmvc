@@ -30,13 +30,7 @@ public class CrfDelegateService extends DelegateService implements JavaDelegate 
         execution.getVariableInstances();
 
 
-        System.out.println("-- CrfDelegateService START -- : " + execution.toString());
-
-        execution.setVariable(getServiceName().concat("_output"), getServiceName().concat("_output"));
-
-        //execution.setVariable("inputSecond", 2);
-
-        System.out.println("-- CrfDelegateService END   -- : " + execution.toString());
+        ex(execution);
 
     }
 }

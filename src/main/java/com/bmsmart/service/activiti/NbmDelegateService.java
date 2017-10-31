@@ -42,18 +42,7 @@ public class NbmDelegateService extends DelegateService implements JavaDelegate 
         // 获得包括parent的所有的variable
         execution.getVariableInstances();
 
-        ((ExecutionEntity) execution).getActivity().getOutgoingTransitions();
-
-
-
-
-        System.out.println("-- NbmDelegateService START -- : " + execution.toString());
-
-        System.out.println("| " + getServiceName().concat("_output") + " is set |");
-
-        execution.setVariable(getServiceName().concat("_output"), getServiceName().concat("_output"));
-
-        System.out.println("-- NbmDelegateService END   -- : " + execution.toString());
+        ex(execution);
 
     }
 }
