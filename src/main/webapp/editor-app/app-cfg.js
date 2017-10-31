@@ -23,5 +23,6 @@ var ACTIVITI = ACTIVITI || {};
 ACTIVITI.CONFIG = {
 	// 'contextRoot' : '/bmsmart-explorer/service',
     // 'contextRoot' : '/acticiti-springmvc-module/service',
-    'contextRoot' : '/bmsmart/service',
+    //'contextRoot' : '/bmsmart/service',
+    'contextRoot' : '/activiti/service',
 };
