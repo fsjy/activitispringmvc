@@ -22,15 +22,17 @@
 
     <link href="${bootstrapCss}" rel="stylesheet" />
     <link href="${coreCss}" rel="stylesheet" />
-    <!--
 
-    <link href="${pageContext.request.contextPath}/resources/core/css/hello.css" rel="stylesheet" >
-    <link href="${pageContext.request.contextPath}/resources/core/css/bootstrap.min.css" rel="stylesheet" >
-    -->
 
     <spring:url value="/resources/core/js/jquery.1.10.2.min.js"
                 var="jqueryJs" />
     <script src="${jqueryJs}"></script>
+
+    <!-- Angular Js -->
+    <spring:url value="/resources/core/js/angular1.2.32.js"
+                var="angularJs" />
+    <script src="${angularJs}"></script>
+
 </head>
 
 <nav class="navbar navbar-inverse">
@@ -85,6 +87,9 @@
 
 </div>
 
+
+
+
 <div class="container">
     <footer>
         <p>
@@ -108,7 +113,7 @@
 
         });
 
-        $("#bth-activiti").click(function (event) {
+        $("#bth-bmsmart").click(function (event) {
 
             //alert();
             window.open("model/create?name=20171024-1&key=20171024-1&description=testForIntegration");

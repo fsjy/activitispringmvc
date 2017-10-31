@@ -1,17 +1,30 @@
 package com.bmsmart.service.activiti;
 
+import org.activiti.engine.RepositoryService;
+import org.activiti.engine.RuntimeService;
+import org.activiti.engine.TaskService;
 import org.activiti.engine.delegate.DelegateExecution;
 import org.activiti.engine.delegate.JavaDelegate;
+import org.activiti.engine.impl.persistence.entity.ExecutionEntity;
+import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 /**
- * CRF训练模型服务
+ * 朴素贝叶斯训练模型服务
  * Add by Yanglu 2017.10.26
  */
-public class CrfDelegateService implements JavaDelegate {
+public class NbmDelegateService extends DelegateService implements JavaDelegate {
+
+
+    @Autowired
+    private RepositoryService repositoryService;
+
+    @Autowired
+    private RuntimeService runtimeService;
+
+    @Autowired
+    private TaskService taskService;
 
     /**
      * 需要实现activiti的execute接口
@@ -29,16 +42,18 @@ public class CrfDelegateService implements JavaDelegate {
         // 获得包括parent的所有的variable
         execution.getVariableInstances();
 
+        ((ExecutionEntity) execution).getActivity().getOutgoingTransitions();
 
-        System.out.println("-- CrfDelegateService START -- : " + execution.toString());
 
-        Optional<Object> inputObj = Optional.of(execution.getVariable("input"));
 
-        if (inputObj.isPresent()) {
-            System.out.println("intput is :" + inputObj.toString());
-        }
 
-        System.out.println("-- CrfDelegateService END   -- : " + execution.toString());
+        System.out.println("-- NbmDelegateService START -- : " + execution.toString());
+
+        System.out.println("| " + getServiceName().concat("_output") + " is set |");
+
+        execution.setVariable(getServiceName().concat("_output"), getServiceName().concat("_output"));
+
+        System.out.println("-- NbmDelegateService END   -- : " + execution.toString());
 
     }
 }

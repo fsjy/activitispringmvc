@@ -50,7 +50,7 @@
           <version>${jstl.version}</version>
       </dependency>
 
-      <!-- activiti Dependency -->
+      <!-- bmsmart Dependency -->
       <dependency>
           <groupId>org.activiti</groupId>
           <artifactId>activiti-engine</artifactId>

@@ -1,6 +1,6 @@
-package com.activiti.model;
+package com.bmsmart.model;
 
-import com.activiti.jsonview.Views;
+import com.bmsmart.jsonview.Views;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import java.util.List;

@@ -6,7 +6,6 @@ import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;
 import org.activiti.validation.ProcessValidatorFactory;
 
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,7 +16,7 @@ import java.util.Map;
  * @Date: 2017/10/13
  *
  */
-public class ServiceTaskTest {
+public class UserTaskTest {
 
     private ProcessValidatorFactory processValidatorFactory = null;
 
@@ -108,9 +107,9 @@ public class ServiceTaskTest {
 
         // 发布xml流程蓝图到服务中
         repositoryService.createDeployment()
-                //.addClasspathResource("org/activiti/test/vacationRequest.bpmn20.xml")
-                .addClasspathResource("testxml/my-process.bpmn20.xml")
-                //.addClasspathResource("org/activiti/test/process.bpmn20-2.xml")
+                //.addClasspathResource("org/bmsmart/test/vacationRequest.bpmn20.xml")
+                .addClasspathResource("testxml/serviceTask-activiti-expression-xml-data-transit-test.bpmn20.xml")
+                //.addClasspathResource("org/bmsmart/test/process.bpmn20-2.xml")
                 .deploy();
 
 
@@ -167,7 +166,7 @@ public class ServiceTaskTest {
 
 
 
-//        InputStream xmlStream = classLoader.getResourceAsStream("org/activiti/test/process.bpmn20-2.xml");
+//        InputStream xmlStream = classLoader.getResourceAsStream("org/bmsmart/test/process.bpmn20-2.xml");
 //        XMLInputFactoryImpl xif= new XMLInputFactoryImpl();
 //        InputStreamReader in = new InputStreamReader(xmlStream, "UTF-8");
 //        //XMLStreamReader xtr = xif.createXMLStreamReader(in);

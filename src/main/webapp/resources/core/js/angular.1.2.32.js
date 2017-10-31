@@ -19219,7 +19219,7 @@ var ngControllerDirective = [function() {
  * ```
  *
  * This error is harmless but annoying. To prevent the error from showing up, put the `ngCsp`
- * directive on the root element of the application or on the `angular.js` script tag, whichever
+ * directive on the root element of the application or on the `angular.1.2.32.js` script tag, whichever
  * appears first in the html document.
  *
  * *Note: This directive is only available in the `ng-csp` and `data-ng-csp` attribute form.*

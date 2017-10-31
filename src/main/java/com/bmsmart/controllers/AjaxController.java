@@ -1,9 +1,9 @@
-package com.activiti.controllers;
+package com.bmsmart.controllers;
 
-import com.activiti.jsonview.Views;
-import com.activiti.model.AjaxResponseBody;
-import com.activiti.model.SearchCriteria;
-import com.activiti.model.User;
+import com.bmsmart.jsonview.Views;
+import com.bmsmart.model.AjaxResponseBody;
+import com.bmsmart.model.SearchCriteria;
+import com.bmsmart.model.User;
 import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestBody;

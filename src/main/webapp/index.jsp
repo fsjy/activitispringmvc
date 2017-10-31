@@ -27,6 +27,8 @@
     <script src="${jqueryJs}"></script>
 </head>
 
+<body>
+
 <nav class="navbar navbar-inverse">
     <div class="container">
         <div class="navbar-header">
@@ -69,6 +71,47 @@
 
             </div>
 
+            <div class="form-group">
+
+                <div class="col-sm-offset-2 col-sm-10">
+                    <a class='btn btn-primary btn-lg' href="${pageContext.request.contextPath}/local/modeList">Model List</a>
+                </div>
+
+
+            </div>
+
+            <div class="form-group">
+
+                <div class="col-sm-offset-2 col-sm-10">
+                    <a class='btn btn-primary btn-lg' href="${pageContext.request.contextPath}/local/taskServiceXmlTransit">
+                        Run TaskService With Xml Data Transit
+                    </a>
+                </div>
+
+
+            </div>
+
+            <div class="form-group">
+
+                <div class="col-sm-offset-2 col-sm-10">
+                    <a class='btn btn-primary btn-lg' href="${pageContext.request.contextPath}/local/taskServiceVariableTransit">
+                        Run TaskService With Variable Data Transit
+                    </a>
+                </div>
+
+
+            </div>
+
+            <div class="form-group">
+
+                <div class="col-sm-offset-2 col-sm-10">
+                    <a class='btn btn-primary btn-lg' href="${pageContext.request.contextPath}/local/taskServiceGatewayVariableTransit">
+                        Run TaskService Using Gateway With Variable Data Transit
+                    </a>
+                </div>
+
+
+            </div>
 
         </form>
 

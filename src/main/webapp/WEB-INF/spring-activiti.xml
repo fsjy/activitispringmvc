@@ -48,7 +48,7 @@
 
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" >
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://localhost:3306/activiti" />
+        <property name="url" value="jdbc:mysql://localhost:3306/activiti?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false" />
         <property name="username" value="activiti" />
         <property name="password" value="activiti" />
         <property name="defaultAutoCommit" value="false" />
@@ -64,6 +64,17 @@
         启动出错，缺少此class的definition
     -->
     <bean id="contentTypeResolver" class="org.activiti.rest.common.application.DefaultContentTypeResolver"/>
+
+
+    <!--
+       ️Add by Yanglu 2017.10.30
+        为实现TaskService 的expression的返回值写法
+        声明本地的Service 目的是配合 activiti:resultVariable="localServiceResult">
+    -->
+    <bean id="crfServiceResolver" class="com.bmsmart.service.local.impl.LocalTaskServiceImpl"/>
+
+
+
 
 
 </beans>

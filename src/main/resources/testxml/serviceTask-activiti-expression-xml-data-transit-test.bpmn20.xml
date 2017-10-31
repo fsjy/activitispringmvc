@@ -22,8 +22,6 @@
     2. 按照flow调用每一个serviceTask时，前一个resultVariable可以作为后一个方法的input，需要采用UEL表达式进行书写
        如${className.getMethod()}代表一个注入为className的springBean的getMethod()方法的调用
 
-    3.
-
 
     -->
     <serviceTask id="servicetask1" name="CRFService"

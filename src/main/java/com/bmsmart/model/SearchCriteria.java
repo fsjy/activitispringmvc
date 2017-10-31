@@ -1,4 +1,4 @@
-package com.activiti.model;
+package com.bmsmart.model;
 
 public class SearchCriteria {
 

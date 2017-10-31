@@ -14,12 +14,12 @@
 
 
 
-    <context:component-scan base-package="com.activiti.controllers" />
+    <context:component-scan base-package="com.bmsmart.controllers" />
     <!-- Modified by Yanglu 2017.10.26
-    由于使用activiti-rest 所以需要扫描的包变成 org.activiti.rest
+    由于使用activiti-rest 所以需要扫描的包变成 org.bmsmart.rest
 
-    <context:component-scan base-package="org.activiti.rest.editor" />
-    <context:component-scan base-package="org.activiti.rest.diagram" />
+    <context:component-scan base-package="org.bmsmart.rest.editor" />
+    <context:component-scan base-package="org.bmsmart.rest.diagram" />
     -->
     <context:component-scan base-package="org.activiti.rest" />
 

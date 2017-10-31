@@ -6,10 +6,10 @@ import org.activiti.engine.delegate.JavaDelegate;
 import java.util.Optional;
 
 /**
- * 朴素贝叶斯训练模型服务
+ * Ann 神经网络 训练模型服务
  * Add by Yanglu 2017.10.26
  */
-public class NbmDelegateService implements JavaDelegate {
+public class AnnDelegateService extends DelegateService implements JavaDelegate {
 
     /**
      * 需要实现activiti的execute接口
@@ -28,15 +28,13 @@ public class NbmDelegateService implements JavaDelegate {
         execution.getVariableInstances();
 
 
-        System.out.println("-- NbmDelegateService START -- : " + execution.toString());
+        System.out.println("-- AnnDelegateService START -- : " + execution.toString());
 
-        Optional<Object> inputObj = Optional.of(execution.getVariable("input"));
 
-        if (inputObj.isPresent()) {
-            System.out.println("intput is :" + inputObj.toString());
-        }
+        execution.setVariable(getServiceName().concat("_output"), getServiceName().concat("_output"));
 
-        System.out.println("-- NbmDelegateService END   -- : " + execution.toString());
+
+        System.out.println("-- AnnDelegateService END   -- : " + execution.toString());
 
     }
 }

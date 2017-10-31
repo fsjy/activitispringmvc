@@ -3,8 +3,35 @@
   <process id="my-process" isExecutable="true">
     <startEvent id="start"></startEvent>
     <endEvent id="end"></endEvent>
-    <serviceTask id="servicetask1" name="CRFService" activiti:class="com.activiti.service" activiti:resultVariableName="var"></serviceTask>
-    <serviceTask id="servicetask2" name="DICService" activiti:class="java.beans.MetaData$java_awt_AWTKeyStroke_PersistenceDelegate"></serviceTask>
+
+    <!--
+        ■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+        ■ Add by Yanglu 2017.10.30 ■
+        ■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+
+
+        1. 使用acvitivi:class方式进行service调用
+
+        【前提】：
+          A）activiti:class="com.bmsmart.service.activiti.CrfDelegateService" 中定义的class存在
+          B) 如果采用activiti:delegateExpression="${delegateExpressionBean}"的定义方法，delegateExpressionBean需要
+             实现JavaDelegate结构，并且提前在xml中注册为spring的bean
+
+        2. 按照flow调用每一个serviceTask时，variable的传递不需要使用xml定义，在service中使用execution.get(set)Variable来设定取得即可
+
+    -->
+
+    <serviceTask id="servicetask1" name="CRFService"
+                 activiti:class="com.bmsmart.service.activiti.CrfDelegateService">
+    </serviceTask>
+
+    <serviceTask id="servicetask2" name="DICService"
+                 activiti:class="com.bmsmart.service.activiti.DicDelegateService">
+
+
+    </serviceTask>
+
+
     <sequenceFlow id="flow2" sourceRef="servicetask1" targetRef="servicetask2"></sequenceFlow>
     <sequenceFlow id="flow3" sourceRef="servicetask2" targetRef="end"></sequenceFlow>
     <sequenceFlow id="flow4" sourceRef="start" targetRef="servicetask1"></sequenceFlow>
@@ -12,16 +39,16 @@
   <bpmndi:BPMNDiagram id="BPMNDiagram_my-process">
     <bpmndi:BPMNPlane bpmnElement="my-process" id="BPMNPlane_my-process">
       <bpmndi:BPMNShape bpmnElement="start" id="BPMNShape_start">
-        <omgdc:Bounds height="35.0" width="35.0" x="45.0" y="124.0"></omgdc:Bounds>
+        <omgdc:Bounds height="30.0" width="30.0" x="-15.0" y="-15.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="end" id="BPMNShape_end">
-        <omgdc:Bounds height="35.0" width="35.0" x="610.0" y="280.0"></omgdc:Bounds>
+        <omgdc:Bounds height="30.0" width="30.0" x="-15.0" y="-15.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="servicetask1" id="BPMNShape_servicetask1">
-        <omgdc:Bounds height="55.0" width="105.0" x="10.0" y="270.0"></omgdc:Bounds>
+        <omgdc:Bounds height="55.0" width="105.0" x="-52.5" y="-27.5"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="servicetask2" id="BPMNShape_servicetask2">
-        <omgdc:Bounds height="55.0" width="105.0" x="440.0" y="270.0"></omgdc:Bounds>
+        <omgdc:Bounds height="30.0" width="30.0" x="-15.0" y="-15.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="flow2" id="BPMNEdge_flow2">
         <omgdi:waypoint x="115.0" y="297.0"></omgdi:waypoint>

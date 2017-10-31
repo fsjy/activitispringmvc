@@ -25,7 +25,7 @@
   	<property name="dataSource" ref="dataSource" />
   </bean>
   
-  <bean id="processEngineConfiguration" class="org.activiti.spring.SpringProcessEngineConfiguration">
+  <bean id="processEngineConfiguration" class="org.bmsmart.spring.SpringProcessEngineConfiguration">
   	<property name="dataSource" ref="dataSource" />
   	<property name="transactionManager" ref="transactionManager" />
   	<property name="databaseSchemaUpdate" value="true" />
@@ -33,14 +33,14 @@
     <property name="enableDatabaseEventLogging" value="true" />
     <property name="customFormTypes">
       <list>
-        <bean class="org.activiti.explorer.form.UserFormType"/>
-        <bean class="org.activiti.explorer.form.ProcessDefinitionFormType"/> 
-        <bean class="org.activiti.explorer.form.MonthFormType"/>   
+        <bean class="org.bmsmart.explorer.form.UserFormType"/>
+        <bean class="org.bmsmart.explorer.form.ProcessDefinitionFormType"/>
+        <bean class="org.bmsmart.explorer.form.MonthFormType"/>
       </list>
     </property>
   </bean>
   
-  <bean id="processEngine" class="org.activiti.spring.ProcessEngineFactoryBean" destroy-method="destroy">
+  <bean id="processEngine" class="org.bmsmart.spring.ProcessEngineFactoryBean" destroy-method="destroy">
   	<property name="processEngineConfiguration" ref="processEngineConfiguration" />
   </bean>
   
