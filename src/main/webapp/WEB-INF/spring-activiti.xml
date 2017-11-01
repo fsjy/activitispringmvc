@@ -78,10 +78,21 @@
    ️Add by Yanglu 2017.10.31
     实现JavaDelegate接口的Class交给spring管理，以便在其中注入服务Class
     -->
-    <bean id="CRFDelegateService" class="com.bmsmart.service.activiti.CrfDelegateService"/>
-    <bean id="DICDelegateService" class="com.bmsmart.service.activiti.DicDelegateService"/>
-    <bean id="ANNDelegateService" class="com.bmsmart.service.activiti.AnnDelegateService"/>
-    <bean id="NBMDelegateService" class="com.bmsmart.service.activiti.NbmDelegateService"/>
+    <bean id="CRFDelegateService" class="com.bmsmart.service.activiti.java.CrfDelegateService"/>
+    <bean id="DICDelegateService" class="com.bmsmart.service.activiti.java.DicDelegateService"/>
+    <bean id="ANNDelegateService" class="com.bmsmart.service.activiti.java.AnnDelegateService"/>
+    <bean id="NBMDelegateService" class="com.bmsmart.service.activiti.java.NbmDelegateService"/>
+
+    <!--
+     Add by Yanglu 2017.11.1
+     Rule的DelegateService 在5.22.0与6.0.0的execute方法调用不一样
+     此处为5.22的定义 在xml中 采用的是activiti:class="xxxx"的方法，delegateExpress的方法不支持
+     6.0.0是否支持再调查
+     此处加入bean定义是为了在非spring方式使用此Class的时候可以取得spring的内容
+
+     -->
+    <bean id="RuleDelegateService" class="com.bmsmart.service.activiti.rule.RuleDelegateService"/>
+
 
 
 </beans>

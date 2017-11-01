@@ -118,6 +118,14 @@
                 </div>
             </div>
 
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <a class='btn btn-primary btn-lg' href="${pageContext.request.contextPath}/local/ruleService">
+                        Run Rule Service
+                    </a>
+                </div>
+            </div>
+
 
 
         </form>

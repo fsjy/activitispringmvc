@@ -1,10 +1,7 @@
-package com.bmsmart.service.activiti;
+package com.bmsmart.service.activiti.java;
 
 import org.activiti.engine.delegate.DelegateExecution;
-import org.activiti.engine.delegate.Expression;
 import org.activiti.engine.delegate.JavaDelegate;
-
-import java.util.Optional;
 
 /**
  * 字典模型服务

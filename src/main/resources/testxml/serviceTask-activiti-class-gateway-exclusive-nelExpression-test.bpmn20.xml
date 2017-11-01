@@ -3,14 +3,14 @@
   <process id="my-process" isExecutable="true">
     <startEvent id="start"></startEvent>
     <endEvent id="end"></endEvent>
-    <serviceTask id="servicetask2" name="CRFService" activiti:class="com.bmsmart.service.activiti.CrfDelegateService"></serviceTask>
-    <serviceTask id="servicetask3" name="DICService" activiti:class="com.bmsmart.service.activiti.DicDelegateService"></serviceTask>
-    <serviceTask id="servicetask4" name="DICService" activiti:class="com.bmsmart.service.activiti.DicDelegateService"></serviceTask>
-    <serviceTask id="servicetask5" name="AnnService" activiti:class="com.bmsmart.service.activiti.AnnDelegateService"></serviceTask>
-    <serviceTask id="servicetask6" name="NbmService" activiti:class="com.bmsmart.service.activiti.NbmDelegateService"></serviceTask>
+    <serviceTask id="servicetask2" name="CRFService" activiti:class="com.bmsmart.service.activiti.java.CrfDelegateService"></serviceTask>
+    <serviceTask id="servicetask3" name="DICService" activiti:class="com.bmsmart.service.activiti.java.DicDelegateService"></serviceTask>
+    <serviceTask id="servicetask4" name="DICService" activiti:class="com.bmsmart.service.activiti.java.DicDelegateService"></serviceTask>
+    <serviceTask id="servicetask5" name="AnnService" activiti:class="com.bmsmart.service.activiti.java.AnnDelegateService"></serviceTask>
+    <serviceTask id="servicetask6" name="NbmService" activiti:class="com.bmsmart.service.activiti.java.NbmDelegateService"></serviceTask>
     <sequenceFlow id="flow1" sourceRef="start" targetRef="servicetask1"></sequenceFlow>
     <sequenceFlow id="flow2" sourceRef="servicetask1" targetRef="exclusivegateway1"></sequenceFlow>
-    <serviceTask id="servicetask1" name="SelectService" activiti:class="com.bmsmart.service.activiti.SelectDelegateService"></serviceTask>
+    <serviceTask id="servicetask1" name="SelectService" activiti:class="com.bmsmart.service.activiti.java.SelectDelegateService"></serviceTask>
     <exclusiveGateway id="exclusivegateway1" name="Exclusive Gateway"></exclusiveGateway>
     <exclusiveGateway id="exclusivegateway2" name="Exclusive Gateway"></exclusiveGateway>
     <sequenceFlow id="flow3" sourceRef="exclusivegateway1" targetRef="servicetask2">

@@ -1,14 +1,11 @@
-package com.bmsmart.service.activiti;
+package com.bmsmart.service.activiti.java;
 
 import org.activiti.engine.RepositoryService;
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
 import org.activiti.engine.delegate.DelegateExecution;
 import org.activiti.engine.delegate.JavaDelegate;
-import org.activiti.engine.impl.persistence.entity.ExecutionEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.Optional;
 
 /**
  * 朴素贝叶斯训练模型服务

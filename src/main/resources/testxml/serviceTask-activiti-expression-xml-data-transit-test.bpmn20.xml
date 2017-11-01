@@ -46,7 +46,7 @@
 
     <serviceTask id="servicetask4"
                  name="DICService"
-                 activiti:class="com.bmsmart.service.activiti.DicDelegateService">
+                 activiti:class="com.bmsmart.service.activiti.java.DicDelegateService">
       <extensionElements>
         <activiti:field name="text" expression="${resultStr}" />
       </extensionElements>

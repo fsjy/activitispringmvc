@@ -11,7 +11,7 @@
 
     <sequenceFlow id="flow1" sourceRef="start" targetRef="servicetask1"></sequenceFlow>
     <sequenceFlow id="flow2" sourceRef="servicetask1" targetRef="parallelgateway1"></sequenceFlow>
-    <serviceTask id="servicetask1" name="SelectService" activiti:class="com.bmsmart.service.activiti.SelectDelegateService"></serviceTask>
+    <serviceTask id="servicetask1" name="SelectService" activiti:class="com.bmsmart.service.activiti.java.SelectDelegateService"></serviceTask>
     <sequenceFlow id="flow3" sourceRef="parallelgateway1" targetRef="servicetask2">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${input == 0}]]></conditionExpression>
     </sequenceFlow>
@@ -26,7 +26,7 @@
     <sequenceFlow id="flow8" sourceRef="parallelgateway2" targetRef="servicetask6">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${input == 0}]]></conditionExpression>
     </sequenceFlow>
-    <serviceTask id="servicetask7" name="LastService" activiti:class="com.bmsmart.service.activiti.LastDelegateService"></serviceTask>
+    <serviceTask id="servicetask7" name="LastService" activiti:class="com.bmsmart.service.activiti.java.LastDelegateService"></serviceTask>
     <sequenceFlow id="flow13" sourceRef="servicetask7" targetRef="end"></sequenceFlow>
     <sequenceFlow id="flow14" sourceRef="servicetask5" targetRef="parallelgateway3"></sequenceFlow>
     <sequenceFlow id="flow15" sourceRef="servicetask6" targetRef="parallelgateway3"></sequenceFlow>

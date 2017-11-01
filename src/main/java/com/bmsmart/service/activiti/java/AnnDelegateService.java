@@ -1,9 +1,7 @@
-package com.bmsmart.service.activiti;
+package com.bmsmart.service.activiti.java;
 
 import org.activiti.engine.delegate.DelegateExecution;
 import org.activiti.engine.delegate.JavaDelegate;
-
-import java.util.Optional;
 
 /**
  * Ann 神经网络 训练模型服务

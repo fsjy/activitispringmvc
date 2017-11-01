@@ -13,7 +13,7 @@
         1. 使用acvitivi:class方式进行service调用
 
         【前提】：
-          A）activiti:class="com.bmsmart.service.activiti.CrfDelegateService" 中定义的class存在
+          A）activiti:class="com.bmsmart.service.activiti.java.CrfDelegateService" 中定义的class存在
           B) 如果采用activiti:delegateExpression="${delegateExpressionBean}"的定义方法，delegateExpressionBean需要
              实现JavaDelegate结构，并且提前在xml中注册为spring的bean
 
@@ -22,11 +22,11 @@
     -->
 
     <serviceTask id="servicetask1" name="CRFService"
-                 activiti:class="com.bmsmart.service.activiti.CrfDelegateService">
+                 activiti:class="com.bmsmart.service.activiti.java.CrfDelegateService">
     </serviceTask>
 
     <serviceTask id="servicetask2" name="DICService"
-                 activiti:class="com.bmsmart.service.activiti.DicDelegateService">
+                 activiti:class="com.bmsmart.service.activiti.java.DicDelegateService">
 
 
     </serviceTask>

@@ -1,0 +1,225 @@
+{
+  "resourceId": "227531",
+  "properties": {
+    "process_id": "自定义_BMS_",
+    "documentation": "",
+    "process_author": "",
+    "process_version": "",
+    "process_namespace": "http://www.activiti.org/processdef",
+    "executionlisteners": "",
+    "eventlisteners": "",
+    "signaldefinitions": "",
+    "messagedefinitions": ""
+  },
+  "stencil": {
+    "id": "BPMNDiagram"
+  },
+  "childShapes": [
+    {
+      "resourceId": "sid-E30EC3DF-51BB-45BB-B620-FA6A330A3950",
+      "properties": {
+        "overrideid": "",
+        "documentation": "",
+        "executionlisteners": "",
+        "initiator": "",
+        "formkeydefinition": "",
+        "formproperties": ""
+      },
+      "stencil": {
+        "id": "StartNoneEvent"
+      },
+      "childShapes": [],
+      "outgoing": [
+        {
+          "resourceId": "sid-E771908D-6844-4DBF-9ADA-9C40AE0BF357"
+        }
+      ],
+      "bounds": {
+        "lowerRight": {
+          "x": 132,
+          "y": 141
+        },
+        "upperLeft": {
+          "x": 102,
+          "y": 111
+        }
+      },
+      "dockers": []
+    },
+    {
+      "resourceId": "sid-0A9B6851-72CE-48EB-8BBE-0DD6FD721F4D",
+      "properties": {
+        "overrideid": "",
+        "name": "CRF服务",
+        "documentation": "",
+        "asynchronousdefinition": "false",
+        "exclusivedefinition": "false",
+        "executionlisteners": {
+          "executionListeners": [
+            {
+              "event": "start",
+              "implementation": "${delegation}",
+              "className": "",
+              "expression": "",
+              "delegateExpression": "${delegation}"
+            }
+          ]
+        },
+        "multiinstance_type": "None",
+        "multiinstance_cardinality": "",
+        "multiinstance_collection": "",
+        "multiinstance_variable": "",
+        "multiinstance_condition": "",
+        "isforcompensation": "false",
+        "servicetaskclass": "com.bmsmart.service.activiti.CrfDelegateService",
+        "servicetaskexpression": "",
+        "servicetaskdelegateexpression": "",
+        "servicetaskfields": "",
+        "servicetaskresultvariable": ""
+      },
+      "stencil": {
+        "id": "ServiceTask_CRF"
+      },
+      "childShapes": [],
+      "outgoing": [
+        {
+          "resourceId": "sid-66BDF004-98C3-48BB-95FC-DC6866544AD4"
+        }
+      ],
+      "bounds": {
+        "lowerRight": {
+          "x": 295,
+          "y": 166
+        },
+        "upperLeft": {
+          "x": 195,
+          "y": 86
+        }
+      },
+      "dockers": []
+    },
+    {
+      "resourceId": "sid-E771908D-6844-4DBF-9ADA-9C40AE0BF357",
+      "properties": {
+        "overrideid": "",
+        "documentation": "",
+        "conditionsequenceflow": "",
+        "executionlisteners": "",
+        "defaultflow": "false"
+      },
+      "stencil": {
+        "id": "SequenceFlow"
+      },
+      "childShapes": [],
+      "outgoing": [
+        {
+          "resourceId": "sid-0A9B6851-72CE-48EB-8BBE-0DD6FD721F4D"
+        }
+      ],
+      "bounds": {
+        "lowerRight": {
+          "x": 195,
+          "y": 126
+        },
+        "upperLeft": {
+          "x": 132,
+          "y": 126
+        }
+      },
+      "dockers": [
+        {
+          "x": 15,
+          "y": 15
+        },
+        {
+          "x": 50,
+          "y": 40
+        }
+      ],
+      "target": {
+        "resourceId": "sid-0A9B6851-72CE-48EB-8BBE-0DD6FD721F4D"
+      }
+    },
+    {
+      "resourceId": "sid-AED71559-7044-459E-82DA-024155E7B6DE",
+      "properties": {
+        "overrideid": "",
+        "documentation": "",
+        "executionlisteners": ""
+      },
+      "stencil": {
+        "id": "EndNoneEvent"
+      },
+      "childShapes": [],
+      "outgoing": [],
+      "bounds": {
+        "lowerRight": {
+          "x": 368,
+          "y": 140
+        },
+        "upperLeft": {
+          "x": 340,
+          "y": 112
+        }
+      },
+      "dockers": []
+    },
+    {
+      "resourceId": "sid-66BDF004-98C3-48BB-95FC-DC6866544AD4",
+      "properties": {
+        "overrideid": "",
+        "documentation": "",
+        "conditionsequenceflow": "",
+        "executionlisteners": "",
+        "defaultflow": "false"
+      },
+      "stencil": {
+        "id": "SequenceFlow"
+      },
+      "childShapes": [],
+      "outgoing": [
+        {
+          "resourceId": "sid-AED71559-7044-459E-82DA-024155E7B6DE"
+        }
+      ],
+      "bounds": {
+        "lowerRight": {
+          "x": 339.375,
+          "y": 126
+        },
+        "upperLeft": {
+          "x": 295.390625,
+          "y": 126
+        }
+      },
+      "dockers": [
+        {
+          "x": 50,
+          "y": 40
+        },
+        {
+          "x": 14,
+          "y": 14
+        }
+      ],
+      "target": {
+        "resourceId": "sid-AED71559-7044-459E-82DA-024155E7B6DE"
+      }
+    }
+  ],
+  "bounds": {
+    "lowerRight": {
+      "x": 1200,
+      "y": 1050
+    },
+    "upperLeft": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "stencilset": {
+    "url": "stencilsets/bpmn2.0/bpmn2.0.json",
+    "namespace": "http://b3mn.org/stencilset/bpmn2.0#"
+  },
+  "ssextensions": []
+}

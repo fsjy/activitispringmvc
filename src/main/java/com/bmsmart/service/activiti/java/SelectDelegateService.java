@@ -1,4 +1,4 @@
-package com.bmsmart.service.activiti;
+package com.bmsmart.service.activiti.java;
 
 import org.activiti.engine.delegate.DelegateExecution;
 import org.activiti.engine.delegate.JavaDelegate;

@@ -1,17 +1,13 @@
-package com.bmsmart.service.activiti;
+package com.bmsmart.service.activiti.java;
 
 import org.activiti.engine.delegate.DelegateExecution;
 import org.activiti.engine.delegate.JavaDelegate;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
 /**
- * CRF训练模型服务
- * Add by Yanglu 2017.10.26
+ * 做最后一个总处理的Service
+ * Add by Yanglu 2017.10.31
  */
-public class CrfDelegateService extends DelegateService implements JavaDelegate {
+public class LastDelegateService extends DelegateService implements JavaDelegate {
 
     /**
      * 需要实现activiti的execute接口
@@ -29,8 +25,8 @@ public class CrfDelegateService extends DelegateService implements JavaDelegate 
         // 获得包括parent的所有的variable
         execution.getVariableInstances();
 
-
         ex(execution);
+
 
     }
 }
