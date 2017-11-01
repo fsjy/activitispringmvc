@@ -1,5 +1,5 @@
 {
-  "resourceId": "227531",
+  "resourceId": "330008",
   "properties": {
     "process_id": "自定义_BMS_",
     "documentation": "",
@@ -16,7 +16,7 @@
   },
   "childShapes": [
     {
-      "resourceId": "sid-E30EC3DF-51BB-45BB-B620-FA6A330A3950",
+      "resourceId": "sid-9A13842D-9772-4D17-97CA-402152C2F7B9",
       "properties": {
         "overrideid": "",
         "documentation": "",
@@ -31,75 +31,65 @@
       "childShapes": [],
       "outgoing": [
         {
-          "resourceId": "sid-E771908D-6844-4DBF-9ADA-9C40AE0BF357"
+          "resourceId": "sid-EFFFE26A-2400-4A78-BA18-F36D2A4069EB"
         }
       ],
       "bounds": {
         "lowerRight": {
-          "x": 132,
-          "y": 141
+          "x": 127,
+          "y": 112
         },
         "upperLeft": {
-          "x": 102,
-          "y": 111
+          "x": 97,
+          "y": 82
         }
       },
       "dockers": []
     },
     {
-      "resourceId": "sid-0A9B6851-72CE-48EB-8BBE-0DD6FD721F4D",
+      "resourceId": "sid-22F076B2-516D-4915-A3F3-E4899AD91AAE",
       "properties": {
         "overrideid": "",
-        "name": "CRF服务",
+        "name": "RULE测试服务",
         "documentation": "",
         "asynchronousdefinition": "false",
         "exclusivedefinition": "false",
-        "executionlisteners": {
-          "executionListeners": [
-            {
-              "event": "start",
-              "implementation": "${delegation}",
-              "className": "",
-              "expression": "",
-              "delegateExpression": "${delegation}"
-            }
-          ]
-        },
+        "executionlisteners": "",
         "multiinstance_type": "None",
         "multiinstance_cardinality": "",
         "multiinstance_collection": "",
         "multiinstance_variable": "",
         "multiinstance_condition": "",
         "isforcompensation": "false",
-        "servicetaskclass": "com.bmsmart.service.activiti.CrfDelegateService",
-        "servicetaskexpression": "",
-        "servicetaskdelegateexpression": "",
-        "servicetaskfields": "",
-        "servicetaskresultvariable": ""
+        "ruletask_class": "com.bmsmart.service.activiti.rule.RuleDelegateService",
+        "ruletask_rules": "",
+        "ruletask_variables_input": "",
+        "ruletask_exclude": "false",
+        "ruletask_result": ""
       },
       "stencil": {
-        "id": "ServiceTask_CRF"
+        "id": "BusinessRule"
       },
       "childShapes": [],
       "outgoing": [
         {
-          "resourceId": "sid-66BDF004-98C3-48BB-95FC-DC6866544AD4"
+          "resourceId": "sid-E43B196F-8EEE-4685-957E-CE83768B5D27"
         }
       ],
       "bounds": {
         "lowerRight": {
-          "x": 295,
-          "y": 166
+          "x": 356,
+          "y": 137
         },
         "upperLeft": {
-          "x": 195,
-          "y": 86
+          "x": 256,
+          "y": 57
         }
       },
       "dockers": []
     },
     {
-      "resourceId": "sid-E771908D-6844-4DBF-9ADA-9C40AE0BF357",
+      "resourceId": "sid-EFFFE26A-2400-4A78-BA18-F36D2A4069EB",
       "properties": {
         "overrideid": "",
         "documentation": "",
@@ -113,17 +103,17 @@
       "childShapes": [],
       "outgoing": [
         {
-          "resourceId": "sid-0A9B6851-72CE-48EB-8BBE-0DD6FD721F4D"
+          "resourceId": "sid-22F076B2-516D-4915-A3F3-E4899AD91AAE"
         }
       ],
       "bounds": {
         "lowerRight": {
-          "x": 195,
-          "y": 126
+          "x": 255.7421875,
+          "y": 97
         },
         "upperLeft": {
-          "x": 132,
-          "y": 126
+          "x": 127.3984375,
+          "y": 97
         }
       },
       "dockers": [
@@ -137,11 +127,11 @@
         }
       ],
       "target": {
-        "resourceId": "sid-0A9B6851-72CE-48EB-8BBE-0DD6FD721F4D"
+        "resourceId": "sid-22F076B2-516D-4915-A3F3-E4899AD91AAE"
       }
     },
     {
-      "resourceId": "sid-AED71559-7044-459E-82DA-024155E7B6DE",
+      "resourceId": "sid-94963103-10D5-4E48-BDBD-4CCD9D96DA03",
       "properties": {
         "overrideid": "",
         "documentation": "",
@@ -154,18 +144,18 @@
       "outgoing": [],
       "bounds": {
         "lowerRight": {
-          "x": 368,
-          "y": 140
+          "x": 429,
+          "y": 111
         },
         "upperLeft": {
-          "x": 340,
-          "y": 112
+          "x": 401,
+          "y": 83
         }
       },
       "dockers": []
     },
     {
-      "resourceId": "sid-66BDF004-98C3-48BB-95FC-DC6866544AD4",
+      "resourceId": "sid-E43B196F-8EEE-4685-957E-CE83768B5D27",
       "properties": {
         "overrideid": "",
         "documentation": "",
@@ -179,17 +169,17 @@
       "childShapes": [],
       "outgoing": [
         {
-          "resourceId": "sid-AED71559-7044-459E-82DA-024155E7B6DE"
+          "resourceId": "sid-94963103-10D5-4E48-BDBD-4CCD9D96DA03"
         }
       ],
       "bounds": {
         "lowerRight": {
-          "x": 339.375,
-          "y": 126
+          "x": 400.375,
+          "y": 97
         },
         "upperLeft": {
-          "x": 295.390625,
-          "y": 126
+          "x": 356.390625,
+          "y": 97
         }
       },
       "dockers": [
@@ -203,7 +193,7 @@
         }
       ],
       "target": {
-        "resourceId": "sid-AED71559-7044-459E-82DA-024155E7B6DE"
+        "resourceId": "sid-94963103-10D5-4E48-BDBD-4CCD9D96DA03"
       }
     }
   ],

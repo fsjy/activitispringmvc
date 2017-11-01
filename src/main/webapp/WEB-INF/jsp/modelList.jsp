@@ -34,24 +34,10 @@
     </script>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     <!-- Angular Js -->
     <spring:url value="/resources/core/js/angular.1.2.32.js"
                 var="angularJs"/>
     <script src="${angularJs}"></script>
-
-
 
 
     <script>
@@ -64,12 +50,47 @@
 
         myAPP.controller("myController", function ($scope, $http) {
 
-            $scope.createModel = function() {
 
-                window.open(baseUrl + "/model/create?name="+ $scope.inputModels.nameLike +"&key="+ $scope.inputModels.key +"&description="+ $scope.inputModels.description +"");
+            $scope.Deploy = function (modelId) {
+
+                //alert(modelId);
+
+                var sentUrl = baseUrl + "/local/deploy"
+
+                var senddata = {modelId : ""};
+
+                senddata.modelId = modelId;
+
+                $http({
+                    method: 'POST'
+                    , url: sentUrl
+                    , params: senddata
+
+                }).then(function successCallback(response) {
+
+                    $scope.models = response.data.data;
+
+                }, function errorCallback(response) {
+                    // called asynchronously if an error occurs
+                    // or server returns response with an error status.
+                    $scope.data = response.data || 'Request failed';
+                    $scope.status = response.status;
+
+                    //alert($scope.data);
+                    //alert($scope.status);
+                    alert("failed");
+                });
+
 
             };
 
+
+
+            $scope.createModel = function () {
+
+                window.open(baseUrl + "/model/create?name=" + $scope.inputModels.nameLike + "&key=" + $scope.inputModels.key + "&description=" + $scope.inputModels.description + "");
+
+            };
 
 
             $scope.SendData = function (url) {
@@ -158,8 +179,6 @@
             };
 
 
-
-
         });
 
 
@@ -214,6 +233,19 @@
             <button type="button" id="bth-activiti-create" class="btn btn-default" ng-click="createModel()">
                 Create Model
             </button>
+        </form>
+
+        <form class="form-inline">
+            <div class="form-group">
+
+                <input type="text" class="form-control" id="model_id" ng-model="modelId"
+                       placeholder="Model ID">
+            </div>
+
+            <button type="button" id="bth-activiti-deploy" class="btn btn-default" ng-click="Deploy(modelId)">
+                Create Model
+            </button>
+
         </form>
 
         <h2>List</h2>

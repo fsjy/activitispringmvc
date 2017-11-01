@@ -1,5 +1,6 @@
 package com.bmsmart.controllers.local;
 
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -19,7 +20,6 @@ public class modelController {
 		return "modelList";
 
 	}
-
 
 
 
