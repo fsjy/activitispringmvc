@@ -3,10 +3,14 @@ package com.bmsmart.controllers.local;
 import org.activiti.engine.RepositoryService;
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
+import org.activiti.engine.runtime.Execution;
 import org.activiti.engine.runtime.ProcessInstance;
+import org.activiti.engine.task.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 @Controller
 public class taskServiceController {
@@ -33,16 +37,16 @@ public class taskServiceController {
 
     private final static String RULE_SERVICE_XML = "testxml/businessRuleTask-activiti-class.bpmn20.xml";
 
-	/**
-	 *
-	 * 测试使用在xml中使用UEL来传递参数的 TaskService运行入口
-	 * ignore "POST" and "GET"
-	 *
-	 *
-	 * @return
-	 */
-	@RequestMapping(value = "local/taskServiceXmlTransit")
-	public String executeTaskServiceByUel() {
+    private final static String RULE_ONE_BY_ONE_SERVICE_XML = "testxml/businessRuleTask-onebyone-activiti-class.bpmn20.xml";
+
+    /**
+     * 测试使用在xml中使用UEL来传递参数的 TaskService运行入口
+     * ignore "POST" and "GET"
+     *
+     * @return
+     */
+    @RequestMapping(value = "local/taskServiceXmlTransit")
+    public String executeTaskServiceByUel() {
 
         repositoryService.createDeployment()
                 //.addClasspathResource("org/bmsmart/test/vacationRequest.bpmn20.xml")
@@ -54,13 +58,11 @@ public class taskServiceController {
 
         return "modelList";
 
-	}
+    }
 
     /**
-     *
      * 测试使用在实现Delegate的class中使用variable来传递参数的 TaskService运行入口
      * ignore "POST" and "GET"
-     *
      *
      * @return
      */
@@ -81,13 +83,11 @@ public class taskServiceController {
     }
 
     /**
-     *
      * 测试使用在实现Delegate的class中使用variable来传递参数的 TaskService运行入口
      * 并且加入网关的条件选择路径，测试传递条件值${input}是否正确
      * 测试使用Exclusive网关
-     *
+     * <p>
      * ignore "POST" and "GET"
-     *
      *
      * @return
      */
@@ -106,18 +106,18 @@ public class taskServiceController {
 
         ProcessInstance processInstance = runtimeService.startProcessInstanceByKey(ACTIVITI_PROCESS_ID, "");
 
+
+
         return "modelList";
 
     }
 
     /**
-     *
      * 测试使用在实现Delegate的class中使用variable来传递参数的 TaskService运行入口
      * 并且加入网关的条件选择路径，测试传递条件值${input}是否正确
      * 测试使用Parallel网关
-     *
+     * <p>
      * ignore "POST" and "GET"
-     *
      *
      * @return
      */
@@ -142,13 +142,11 @@ public class taskServiceController {
 
 
     /**
-     *
      * 测试使用在实现Delegate的class中使用variable来传递参数的 TaskService运行入口
      * 并且加入网关的条件选择路径，测试传递条件值${input}是否正确
      * 测试使用Parallel网关
-     *
+     * <p>
      * ignore "POST" and "GET"
-     *
      *
      * @return
      */
@@ -157,7 +155,7 @@ public class taskServiceController {
 
         repositoryService.createDeployment()
                 //.addClasspathResource("org/bmsmart/test/vacationRequest.bpmn20.xml")
-                .addClasspathResource(RULE_SERVICE_XML)
+                .addClasspathResource(RULE_ONE_BY_ONE_SERVICE_XML)
                 //.addClasspathResource("org/bmsmart/test/process.bpmn20-2.xml")
                 .deploy();
 
@@ -165,7 +163,12 @@ public class taskServiceController {
         taskService.getClass();
 
 
-        ProcessInstance processInstance = runtimeService.startProcessInstanceByKey(ACTIVITI_PROCESS_ID, "");
+        ProcessInstance processInstance = runtimeService.startProcessInstanceByKey("自定义_BMS_", "");
+
+
+        List<Task> tasks = taskService.createTaskQuery().list();
+
+        List<Execution> executions = runtimeService.createExecutionQuery().list();
 
         return "modelList";
 

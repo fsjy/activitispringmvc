@@ -3,15 +3,25 @@
     <process id="my-process" isExecutable="true">
         <startEvent id="startevent1" name="Start"></startEvent>
         <businessRuleTask id="businessruletask1" name="Business rule task"
-                          activiti:class="com.bmsmart.service.activiti.rule.RuleDelegateService"
+                          activiti:class="com.bmsmart.service.activiti.rule.RuleDelegateService1"
                           activiti:ruleVariablesInput="var1,var2"
                           activiti:resultVariable="${title_output}"
                           >
 
         </businessRuleTask>
+
+        <businessRuleTask id="businessruletask2" name="Business rule task"
+                          activiti:class="com.bmsmart.service.activiti.rule.RuleDelegateService1"
+                          activiti:ruleVariablesInput="var1,var2"
+                          activiti:resultVariable="${title_output}"
+        >
+
+        </businessRuleTask>
+
         <sequenceFlow id="flow1" sourceRef="startevent1" targetRef="businessruletask1"></sequenceFlow>
+        <sequenceFlow id="flow2" sourceRef="businessruletask1" targetRef="businessruletask2"></sequenceFlow>
         <endEvent id="endevent1" name="End"></endEvent>
-        <sequenceFlow id="flow2" sourceRef="businessruletask1" targetRef="endevent1"></sequenceFlow>
+        <sequenceFlow id="flow3" sourceRef="businessruletask2" targetRef="endevent1"></sequenceFlow>
     </process>
     <bpmndi:BPMNDiagram id="BPMNDiagram_my-process">
         <bpmndi:BPMNPlane bpmnElement="my-process" id="BPMNPlane_my-process">

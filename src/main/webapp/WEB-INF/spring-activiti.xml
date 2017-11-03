@@ -91,7 +91,8 @@
      此处加入bean定义是为了在非spring方式使用此Class的时候可以取得spring的内容
 
      -->
-    <bean id="RuleDelegateService" class="com.bmsmart.service.activiti.rule.RuleDelegateService"/>
+    <bean id="RuleDelegateService" class="com.bmsmart.service.activiti.rule.RuleDelegateService1"/>
+    <bean id="RuleDelegateService2" class="com.bmsmart.service.activiti.rule.RuleDelegateService2"/>
 
 
 

@@ -11,7 +11,7 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Configuration;
 
 
-public class RuleDelegateService implements BusinessRuleTaskDelegate, ApplicationContextAware {
+public class RuleDelegateService1 implements BusinessRuleTaskDelegate, ApplicationContextAware {
 
 
     private Expression expression;
@@ -47,7 +47,7 @@ public class RuleDelegateService implements BusinessRuleTaskDelegate, Applicatio
 
     @Override
     public void execute(ActivityExecution execution) throws Exception {
-        System.out.println("Instance of RuleDelegateService:");
+        System.out.println("Instance of "+ this.getClass().getSimpleName() +":");
         System.out.println("++++++++++++++++++++++++++++++++");
         System.out.println(this.toString());
         System.out.println("++++++++++++++++++++++++++++++++");
@@ -60,12 +60,12 @@ public class RuleDelegateService implements BusinessRuleTaskDelegate, Applicatio
         System.out.println();
 
 
-        BasicDataSource dataSource = (BasicDataSource) ctx.getBean("dataSource");
-
-        System.out.println("Spring bean dataSource is:");
-        System.out.println("++++++++++++++++++++++++++++++++");
-        System.out.println(dataSource.toString());
-        System.out.println("++++++++++++++++++++++++++++++++");
-        System.out.println();
+//        BasicDataSource dataSource = (BasicDataSource) ctx.getBean("dataSource");
+//
+//        System.out.println("Spring bean dataSource is:");
+//        System.out.println("++++++++++++++++++++++++++++++++");
+//        System.out.println(dataSource.toString());
+//        System.out.println("++++++++++++++++++++++++++++++++");
+//        System.out.println();
     }
 }
