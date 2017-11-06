@@ -1,0 +1,299 @@
+{
+  "resourceId": "332518",
+  "properties": {
+    "process_id": "自定义_BMS_",
+    "documentation": "",
+    "process_author": "",
+    "process_version": "",
+    "process_namespace": "http://www.activiti.org/processdef",
+    "executionlisteners": "",
+    "eventlisteners": "",
+    "signaldefinitions": "",
+    "messagedefinitions": ""
+  },
+  "stencil": {
+    "id": "BPMNDiagram"
+  },
+  "childShapes": [
+    {
+      "resourceId": "sid-27ABFB39-50F2-4F4A-9022-BB6D9189F260",
+      "properties": {
+        "overrideid": "",
+        "documentation": "",
+        "executionlisteners": "",
+        "initiator": "",
+        "formkeydefinition": "",
+        "formproperties": ""
+      },
+      "stencil": {
+        "id": "StartNoneEvent"
+      },
+      "childShapes": [],
+      "outgoing": [
+        {
+          "resourceId": "sid-FFA0084A-44F5-4721-9F2C-28C9D2930B0A"
+        }
+      ],
+      "bounds": {
+        "lowerRight": {
+          "x": 170,
+          "y": 98
+        },
+        "upperLeft": {
+          "x": 140,
+          "y": 68
+        }
+      },
+      "dockers": []
+    },
+    {
+      "resourceId": "sid-F371694B-8A98-448C-AC79-17A1AD5DDA7D",
+      "properties": {
+        "overrideid": "service1",
+        "name": "RULE测试服务1",
+        "documentation": "",
+        "asynchronousdefinition": "false",
+        "exclusivedefinition": "false",
+        "executionlisteners": "",
+        "multiinstance_type": "None",
+        "multiinstance_cardinality": "",
+        "multiinstance_collection": "",
+        "multiinstance_variable": "",
+        "multiinstance_condition": "",
+        "isforcompensation": "false",
+        "ruletask_class": "com.bmsmart.service.activiti.rule.RuleDelegateService",
+        "ruletask_rules": "",
+        "ruletask_variables_input": "title, content",
+        "ruletask_exclude": "false",
+        "ruletask_result": ""
+      },
+      "stencil": {
+        "id": "BusinessRule"
+      },
+      "childShapes": [],
+      "outgoing": [
+        {
+          "resourceId": "sid-9BD99171-2BC5-4BBE-BFB0-E34CB7B701A2"
+        }
+      ],
+      "bounds": {
+        "lowerRight": {
+          "x": 447,
+          "y": 123
+        },
+        "upperLeft": {
+          "x": 347,
+          "y": 43
+        }
+      },
+      "dockers": []
+    },
+    {
+      "resourceId": "sid-FFA0084A-44F5-4721-9F2C-28C9D2930B0A",
+      "properties": {
+        "overrideid": "",
+        "documentation": "",
+        "conditionsequenceflow": "",
+        "executionlisteners": "",
+        "defaultflow": "false"
+      },
+      "stencil": {
+        "id": "SequenceFlow"
+      },
+      "childShapes": [],
+      "outgoing": [
+        {
+          "resourceId": "sid-F371694B-8A98-448C-AC79-17A1AD5DDA7D"
+        }
+      ],
+      "bounds": {
+        "lowerRight": {
+          "x": 346.84375,
+          "y": 83
+        },
+        "upperLeft": {
+          "x": 170.1796875,
+          "y": 83
+        }
+      },
+      "dockers": [
+        {
+          "x": 15,
+          "y": 15
+        },
+        {
+          "x": 50,
+          "y": 40
+        }
+      ],
+      "target": {
+        "resourceId": "sid-F371694B-8A98-448C-AC79-17A1AD5DDA7D"
+      }
+    },
+    {
+      "resourceId": "sid-40D8EDE8-044C-4DAE-BA5C-8A01E8C01863",
+      "properties": {
+        "overrideid": "",
+        "name": "RULE测试服务2",
+        "documentation": "",
+        "asynchronousdefinition": "false",
+        "exclusivedefinition": "false",
+        "executionlisteners": "",
+        "multiinstance_type": "None",
+        "multiinstance_cardinality": "",
+        "multiinstance_collection": "",
+        "multiinstance_variable": "",
+        "multiinstance_condition": "",
+        "isforcompensation": "false",
+        "ruletask_class": "com.bmsmart.service.activiti.rule.RuleDelegateService2",
+        "ruletask_rules": "",
+        "ruletask_variables_input": "title,service1",
+        "ruletask_exclude": "false",
+        "ruletask_result": ""
+      },
+      "stencil": {
+        "id": "BusinessRule2"
+      },
+      "childShapes": [],
+      "outgoing": [
+        {
+          "resourceId": "sid-C160B6FD-E4FF-4C68-982A-8CFBF69EC7A0"
+        }
+      ],
+      "bounds": {
+        "lowerRight": {
+          "x": 670,
+          "y": 123
+        },
+        "upperLeft": {
+          "x": 570,
+          "y": 43
+        }
+      },
+      "dockers": []
+    },
+    {
+      "resourceId": "sid-9BD99171-2BC5-4BBE-BFB0-E34CB7B701A2",
+      "properties": {
+        "overrideid": "",
+        "documentation": "",
+        "conditionsequenceflow": "",
+        "executionlisteners": "",
+        "defaultflow": "false"
+      },
+      "stencil": {
+        "id": "SequenceFlow"
+      },
+      "childShapes": [],
+      "outgoing": [
+        {
+          "resourceId": "sid-40D8EDE8-044C-4DAE-BA5C-8A01E8C01863"
+        }
+      ],
+      "bounds": {
+        "lowerRight": {
+          "x": 569.34765625,
+          "y": 83
+        },
+        "upperLeft": {
+          "x": 447.65234375,
+          "y": 83
+        }
+      },
+      "dockers": [
+        {
+          "x": 50,
+          "y": 40
+        },
+        {
+          "x": 50,
+          "y": 40
+        }
+      ],
+      "target": {
+        "resourceId": "sid-40D8EDE8-044C-4DAE-BA5C-8A01E8C01863"
+      }
+    },
+    {
+      "resourceId": "sid-F0AEC397-1887-4E17-BD76-40CABAC3F97B",
+      "properties": {
+        "overrideid": "",
+        "documentation": "",
+        "executionlisteners": ""
+      },
+      "stencil": {
+        "id": "EndNoneEvent"
+      },
+      "childShapes": [],
+      "outgoing": [],
+      "bounds": {
+        "lowerRight": {
+          "x": 743,
+          "y": 97
+        },
+        "upperLeft": {
+          "x": 715,
+          "y": 69
+        }
+      },
+      "dockers": []
+    },
+    {
+      "resourceId": "sid-C160B6FD-E4FF-4C68-982A-8CFBF69EC7A0",
+      "properties": {
+        "overrideid": "",
+        "documentation": "",
+        "conditionsequenceflow": "",
+        "executionlisteners": "",
+        "defaultflow": "false"
+      },
+      "stencil": {
+        "id": "SequenceFlow"
+      },
+      "childShapes": [],
+      "outgoing": [
+        {
+          "resourceId": "sid-F0AEC397-1887-4E17-BD76-40CABAC3F97B"
+        }
+      ],
+      "bounds": {
+        "lowerRight": {
+          "x": 714.375,
+          "y": 83
+        },
+        "upperLeft": {
+          "x": 670.390625,
+          "y": 83
+        }
+      },
+      "dockers": [
+        {
+          "x": 50,
+          "y": 40
+        },
+        {
+          "x": 14,
+          "y": 14
+        }
+      ],
+      "target": {
+        "resourceId": "sid-F0AEC397-1887-4E17-BD76-40CABAC3F97B"
+      }
+    }
+  ],
+  "bounds": {
+    "lowerRight": {
+      "x": 1200,
+      "y": 1050
+    },
+    "upperLeft": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "stencilset": {
+    "url": "stencilsets/bpmn2.0/bpmn2.0.json",
+    "namespace": "http://b3mn.org/stencilset/bpmn2.0#"
+  },
+  "ssextensions": []
+}

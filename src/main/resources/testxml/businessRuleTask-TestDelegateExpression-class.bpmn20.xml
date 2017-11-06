@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn"
+             xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+             xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI"
+             typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath"
+             targetNamespace="http://www.activiti.org/processdef">
+    <process id="自定义_BMS_" isExecutable="true">
+        <startEvent id="start1"></startEvent>
+
+        <businessRuleTask id="service1" name="RULE测试服务1"
+                          activiti:ruleVariablesInput="title,content"
+                          activiti:delegateExpression="${RuleDelegateService1}">
+
+        </businessRuleTask>
+
+        <sequenceFlow id="flow1" sourceRef="start1" targetRef="service1"></sequenceFlow>
+        <businessRuleTask id="service2" name="RULE测试服务2"
+                          activiti:ruleVariablesInput="title,service1"
+                          activiti:class="com.bmsmart.service.activiti.rule.RuleDelegateService2">
+
+        </businessRuleTask>
+
+        <sequenceFlow id="flow2" sourceRef="service1" targetRef="service2"></sequenceFlow>
+        <endEvent id="end1"></endEvent>
+        <sequenceFlow id="flow3" sourceRef="service2" targetRef="end1"></sequenceFlow>
+    </process>
+    <bpmndi:BPMNDiagram id="BPMNDiagram_自定义_BMS_">
+        <bpmndi:BPMNPlane bpmnElement="自定义_BMS_" id="BPMNPlane_自定义_BMS_">
+            <bpmndi:BPMNShape bpmnElement="start1" id="BPMNShape_start1">
+                <omgdc:Bounds height="35.0" width="35.0" x="140.0" y="68.0"></omgdc:Bounds>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="service1" id="BPMNShape_service1">
+                <omgdc:Bounds height="80.0" width="100.0" x="260.0" y="240.0"></omgdc:Bounds>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="service2" id="BPMNShape_service2">
+                <omgdc:Bounds height="80.0" width="100.0" x="330.0" y="64.0"></omgdc:Bounds>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="end1" id="BPMNShape_end1">
+                <omgdc:Bounds height="35.0" width="35.0" x="500.0" y="86.0"></omgdc:Bounds>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
+                <omgdi:waypoint x="157.0" y="103.0"></omgdi:waypoint>
+                <omgdi:waypoint x="310.0" y="240.0"></omgdi:waypoint>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="flow2" id="BPMNEdge_flow2">
+                <omgdi:waypoint x="310.0" y="240.0"></omgdi:waypoint>
+                <omgdi:waypoint x="380.0" y="144.0"></omgdi:waypoint>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="flow3" id="BPMNEdge_flow3">
+                <omgdi:waypoint x="430.0" y="104.0"></omgdi:waypoint>
+                <omgdi:waypoint x="500.0" y="103.0"></omgdi:waypoint>
+            </bpmndi:BPMNEdge>
+        </bpmndi:BPMNPlane>
+    </bpmndi:BPMNDiagram>
+</definitions>
