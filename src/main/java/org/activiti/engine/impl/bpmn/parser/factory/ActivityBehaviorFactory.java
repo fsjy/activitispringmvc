@@ -23,6 +23,7 @@ import org.activiti.engine.impl.cfg.ProcessEngineConfigurationImpl;
 import org.activiti.engine.impl.pvm.delegate.ActivityBehavior;
 import org.activiti.engine.impl.pvm.process.ActivityImpl;
 import org.activiti.engine.impl.task.TaskDefinition;
+import org.omg.CORBA.Object;
 
 /**
  * Factory class used by the {@link BpmnParser} and {@link BpmnParse} to instantiate

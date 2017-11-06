@@ -21,7 +21,7 @@ public class UserTaskTest {
     private ProcessValidatorFactory processValidatorFactory = null;
 
     // <process id="my-process" isExecutable="true">
-    private final static String ACTIVITI_PROCESS_ID = "my-process";
+    private final static String ACTIVITI_PROCESS_ID = "自定义_BMS_";
 
 
 //    /**
@@ -108,7 +108,7 @@ public class UserTaskTest {
         // 发布xml流程蓝图到服务中
         repositoryService.createDeployment()
                 //.addClasspathResource("org/bmsmart/test/vacationRequest.bpmn20.xml")
-                .addClasspathResource("testxml/serviceTask-activiti-expression-xml-data-transit-test.bpmn20.xml")
+                .addClasspathResource("testxml/businessRuleTask-TestDelegateExpression-class.bpmn20.xml")
                 //.addClasspathResource("org/bmsmart/test/process.bpmn20-2.xml")
                 .deploy();
 

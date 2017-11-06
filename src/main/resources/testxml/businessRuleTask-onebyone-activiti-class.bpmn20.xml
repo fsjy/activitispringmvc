@@ -7,11 +7,20 @@
              targetNamespace="http://www.activiti.org/processdef">
     <process id="自定义_BMS_" isExecutable="true">
         <startEvent id="start1"></startEvent>
-        <businessRuleTask id="service1" name="RULE测试服务1" activiti:ruleVariablesInput="title,content"
-                          activiti:class="com.bmsmart.service.activiti.rule.RuleDelegateService1"></businessRuleTask>
+
+        <businessRuleTask id="service1" name="RULE测试服务1"
+                          activiti:ruleVariablesInput="title,content"
+                          activiti:class="com.bmsmart.service.activiti.rule.RuleDelegateService1">
+
+        </businessRuleTask>
+
         <sequenceFlow id="flow1" sourceRef="start1" targetRef="service1"></sequenceFlow>
-        <businessRuleTask id="service2" name="RULE测试服务2" activiti:ruleVariablesInput="title,service1"
-                          activiti:class="com.bmsmart.service.activiti.rule.RuleDelegateService2"></businessRuleTask>
+        <businessRuleTask id="service2" name="RULE测试服务2"
+                          activiti:ruleVariablesInput="title,service1"
+                          activiti:class="com.bmsmart.service.activiti.rule.RuleDelegateService2">
+
+        </businessRuleTask>
+
         <sequenceFlow id="flow2" sourceRef="service1" targetRef="service2"></sequenceFlow>
         <endEvent id="end1"></endEvent>
         <sequenceFlow id="flow3" sourceRef="service2" targetRef="end1"></sequenceFlow>

@@ -1,9 +1,12 @@
 package com.bmsmart.service.local.impl;
 
+import com.bmsmart.model.User;
 import com.bmsmart.service.local.LocalService;
 import com.bmsmart.service.local.entities.LocalTaskServiceResult;
 import org.springframework.ejb.interceptor.SpringBeanAutowiringInterceptor;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -27,6 +30,10 @@ public class LocalTaskServiceImpl implements LocalService{
     public String getLocalTaskServiceResult(String start) {
 
         LocalTaskServiceResult result = new LocalTaskServiceResult();
+
+        List<User> userList = new ArrayList<User>();
+
+        userList.
 
 
         return String.valueOf(INSTANCE_COUNT.incrementAndGet());

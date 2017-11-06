@@ -17,6 +17,8 @@ import org.activiti.engine.ActivitiException;
 import org.activiti.engine.delegate.BusinessRuleTaskDelegate;
 import org.activiti.engine.delegate.Expression;
 import org.activiti.engine.impl.bpmn.behavior.*;
+import org.activiti.engine.impl.bpmn.behavior.local.LocalRuleTaskClassBehavior;
+import org.activiti.engine.impl.bpmn.behavior.local.LocalRuleTaskDelegateExpressionBehavior;
 import org.activiti.engine.impl.bpmn.data.SimpleDataInputAssociation;
 import org.activiti.engine.impl.bpmn.helper.ClassDelegate;
 import org.activiti.engine.impl.bpmn.parser.CompensateEventDefinition;
@@ -211,7 +213,14 @@ public class DefaultActivityBehaviorFactory extends AbstractBehaviorFactory impl
     @Override
     public ActivityBehavior createBusinessRuleTaskDelegateExpressionActivityBehavior(BusinessRuleTask businessRuleTask) {
 
-        // Expression delegateExpression = expressionManager.createExpression(serviceTask.getImplementation());
+
+        LocalRuleTaskDelegateExpressionBehavior localRuleTaskDelegateExpressionBehavior =
+                new LocalRuleTaskDelegateExpressionBehavior(expressionManager.createExpression(businessRuleTask.getImplementation()));
+
+
+//        return new ServiceTaskDelegateExpressionActivityBehavior(serviceTask.getId(), delegateExpression,
+//                skipExpression, createFieldDeclarations(serviceTask.getFieldExtensions()));
+
 
         return null;
     }
@@ -225,47 +234,46 @@ public class DefaultActivityBehaviorFactory extends AbstractBehaviorFactory impl
      * 所以在对BusinessRuleActivityBehavior进行初始化的时候通过LocalRuleTaskBehavior包装自己的RuleService类
      * 来实现后续的持续调用
      *
-     *
      * @param businessRuleTask
      * @return
      */
     public ActivityBehavior createBusinessRuleTaskActivityBehavior(BusinessRuleTask businessRuleTask) {
         // BusinessRuleTaskDelegate ruleActivity = null;
-        LocalRuleTaskBehavior localRuleTaskBehavior = null;
+        LocalRuleTaskClassBehavior localRuleTaskClassBehavior = null;
 
         if (StringUtils.isNotEmpty(businessRuleTask.getClassName())) {
             try {
                 Class<?> clazz = Class.forName(businessRuleTask.getClassName());
                 // ruleActivity = (BusinessRuleTaskDelegate) clazz.newInstance();
-                localRuleTaskBehavior = new LocalRuleTaskBehavior();
+                localRuleTaskClassBehavior = new LocalRuleTaskClassBehavior();
 
-                localRuleTaskBehavior.setBusinessRuleTaskDelegate((BusinessRuleTaskDelegate) clazz.newInstance());
+                localRuleTaskClassBehavior.setBusinessRuleTaskDelegate((BusinessRuleTaskDelegate) clazz.newInstance());
 
             } catch (Exception e) {
                 throw new ActivitiException("Could not instantiate businessRuleTask (id:" + businessRuleTask.getId() + ") class: " +
                         businessRuleTask.getClassName(), e);
             }
         } else {
-            localRuleTaskBehavior = new LocalRuleTaskBehavior();
+            localRuleTaskClassBehavior = new LocalRuleTaskClassBehavior();
         }
 
         for (String ruleVariableInputObject : businessRuleTask.getInputVariables()) {
-            localRuleTaskBehavior.addRuleVariableInputIdExpression(expressionManager.createExpression(ruleVariableInputObject.trim()));
+            localRuleTaskClassBehavior.addRuleVariableInputIdExpression(expressionManager.createExpression(ruleVariableInputObject.trim()));
         }
 
         for (String rule : businessRuleTask.getRuleNames()) {
-            localRuleTaskBehavior.addRuleIdExpression(expressionManager.createExpression(rule.trim()));
+            localRuleTaskClassBehavior.addRuleIdExpression(expressionManager.createExpression(rule.trim()));
         }
 
-        localRuleTaskBehavior.setExclude(businessRuleTask.isExclude());
+        localRuleTaskClassBehavior.setExclude(businessRuleTask.isExclude());
 
         if (businessRuleTask.getResultVariableName() != null && businessRuleTask.getResultVariableName().length() > 0) {
-            localRuleTaskBehavior.setResultVariable(businessRuleTask.getResultVariableName());
+            localRuleTaskClassBehavior.setResultVariable(businessRuleTask.getResultVariableName());
         } else {
-            localRuleTaskBehavior.setResultVariable("org.activiti.engine.rules.OUTPUT");
+            localRuleTaskClassBehavior.setResultVariable("org.activiti.engine.rules.OUTPUT");
         }
 
-        return localRuleTaskBehavior;
+        return localRuleTaskClassBehavior;
     }
 
     // Script task
