@@ -22,32 +22,40 @@ public class LocalRuleTaskDelegateExpressionBehavior extends TaskActivityBehavio
 
     protected Expression expression;
 
+    protected Expression ruleVariableInputIdExpression;
+    protected Expression ruleIdExpression;
+    protected boolean exclude;
+    protected String resultVariable;
+
     public LocalRuleTaskDelegateExpressionBehavior(Expression expression) {
         this.expression = expression;
     }
 
     public void addRuleVariableInputIdExpression(Expression inputId) {
 
-        businessRuleTaskDelegate.addRuleVariableInputIdExpression(inputId);
+        this.ruleVariableInputIdExpression = inputId;
 
 
     }
 
     public void addRuleIdExpression(Expression inputId) {
 
-        businessRuleTaskDelegate.addRuleVariableInputIdExpression(inputId);
+        // businessRuleTaskDelegate.addRuleVariableInputIdExpression(inputId);
+        this.ruleIdExpression = inputId;
 
     }
 
     public void setExclude(boolean exclude) {
 
-        businessRuleTaskDelegate.setExclude(exclude);
+        // businessRuleTaskDelegate.setExclude(exclude);
+        this.exclude = exclude;
 
     }
 
     public void setResultVariable(String resultVariableName) {
 
-        businessRuleTaskDelegate.setResultVariable(resultVariableName);
+        // businessRuleTaskDelegate.setResultVariable(resultVariableName);
+        this.resultVariable = resultVariableName;
 
     }
 
@@ -68,6 +76,11 @@ public class LocalRuleTaskDelegateExpressionBehavior extends TaskActivityBehavio
             if (delegate instanceof BusinessRuleTaskDelegate) {
 
                 businessRuleTaskDelegate = (BusinessRuleTaskDelegate) delegate;
+
+                // Bug fixes Modified by Yanglu 在businessRuleTaskDelegate初始化后设置相应xml中定义的输入输出参数
+                businessRuleTaskDelegate.addRuleIdExpression(ruleIdExpression);
+                businessRuleTaskDelegate.addRuleVariableInputIdExpression(ruleVariableInputIdExpression);
+                businessRuleTaskDelegate.setExclude(exclude);
 
                 // 问题，如果采用原生的处理结构，需要增加RuleTaskDelegateInvocation的Class
                 Context.getProcessEngineConfiguration()

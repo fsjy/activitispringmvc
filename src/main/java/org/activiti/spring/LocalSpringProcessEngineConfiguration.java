@@ -5,6 +5,7 @@ import org.activiti.engine.ProcessEngines;
 import org.activiti.engine.impl.bpmn.parser.handler.LocalBusinessRuleParseHandler;
 import org.activiti.engine.impl.cfg.ProcessEngineConfigurationImpl;
 import org.activiti.engine.parse.BpmnParseHandler;
+import org.activiti.spring.autodeployment.AutoDeploymentStrategy;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -19,19 +20,15 @@ public class LocalSpringProcessEngineConfiguration extends SpringProcessEngineCo
 
     /**
      * 加入自定义的<businessRuleTask>的parseHandler
+     * 在{{@link ProcessEngineConfigurationImpl}的方法getDefaultDeployers中进行此方法调用
      *
-     * @param preBpmnParseHandlers
      * @return
      */
     @Override
-    public ProcessEngineConfigurationImpl setPreBpmnParseHandlers(List<BpmnParseHandler> preBpmnParseHandlers) {
-
+    public List<BpmnParseHandler> getPreBpmnParseHandlers() {
         List<BpmnParseHandler> bpmnParseHandlerList = new ArrayList<BpmnParseHandler>();
-
         bpmnParseHandlerList.add(new LocalBusinessRuleParseHandler());
-
-        this.preBpmnParseHandlers = bpmnParseHandlerList;
-
-        return this;
+        preBpmnParseHandlers = bpmnParseHandlerList;
+        return preBpmnParseHandlers;
     }
 }

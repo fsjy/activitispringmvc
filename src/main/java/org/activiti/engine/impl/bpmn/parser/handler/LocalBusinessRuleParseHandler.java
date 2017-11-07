@@ -20,7 +20,7 @@ public class LocalBusinessRuleParseHandler extends AbstractActivityBpmnParseHand
     }
 
     public Class<? extends BaseElement> getHandledType() {
-        return BusinessRuleTask.class;
+        return LocalBusinessRuleTask.class;
     }
 
     protected void executeParse(BpmnParse bpmnParse, LocalBusinessRuleTask localBusinessRuleTask) {

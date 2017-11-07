@@ -29,7 +29,7 @@ import org.activiti.engine.impl.task.TaskDefinition;
  *
  * @author Yanglu
  */
-public interface LocalActivityBehaviorFactory extends ActivityBehaviorFactory {
+public interface LocalActivityBehaviorFactory {
 
     // 增加可以识别UEL的RuleTaskDelegatExession方法
     // Add by Yanglu 2017.11.2

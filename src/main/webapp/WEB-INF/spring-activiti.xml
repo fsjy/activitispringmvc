@@ -4,23 +4,22 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans   http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-
     <!-- Delete by Yanglu 2017.11.7
     <bean id="processEngineConfiguration" class="org.activiti.spring.LocalSpringProcessEngineConfiguration">
         <property name="dataSource" ref="dataSource" />
         <property name="transactionManager" ref="transactionManager" />
 
-        -->
-        <!-- true：自动建表自动升级。数据连接无问题，在datasource中设置的schema中自动建表
-        2017/10/19 By Yanglu
-        <property name="databaseSchemaUpdate" value="true" />
-        -->
+-->
+    <!-- true：自动建表自动升级。数据连接无问题，在datasource中设置的schema中自动建表
+    2017/10/19 By Yanglu
+    <property name="databaseSchemaUpdate" value="true" />
+    -->
 
-    <!--
+        <!--
         <property name="databaseSchemaUpdate" value="false" />
         <property name="jobExecutorActivate" value="false" />
-    </bean>
-    -->
+    </bean>-->
+    <!-- -->
 
 
     <!-- Add by Yanglu 2017.11.7 使用自己定义的Configuration -->
@@ -33,49 +32,48 @@
     </bean>
 
     <!-- Add by Yanglu 2017.11.7 注入自定义的Factory -->
-    <bean id="localActivityBehaviorFactory" class="org.activiti.engine.impl.bpmn.parser.factory.LocalDefaultLocalActivityBehaviorFactory"/>
-
+    <bean id="localActivityBehaviorFactory"
+          class="org.activiti.engine.impl.bpmn.parser.factory.LocalDefaultLocalActivityBehaviorFactory"/>
 
     <bean id="objectMapper" class="com.fasterxml.jackson.databind.ObjectMapper"/>
 
     <bean id="processEngine" class="org.activiti.spring.ProcessEngineFactoryBean">
-        <property name="processEngineConfiguration" ref="processEngineConfiguration" />
+        <property name="processEngineConfiguration" ref="processEngineConfiguration"/>
     </bean>
 
     <bean id="repositoryService" factory-bean="processEngine"
-          factory-method="getRepositoryService" />
+          factory-method="getRepositoryService"/>
     <bean id="runtimeService" factory-bean="processEngine"
-          factory-method="getRuntimeService" />
+          factory-method="getRuntimeService"/>
     <bean id="taskService" factory-bean="processEngine"
-          factory-method="getTaskService" />
+          factory-method="getTaskService"/>
     <bean id="historyService" factory-bean="processEngine"
-          factory-method="getHistoryService" />
+          factory-method="getHistoryService"/>
     <bean id="managementService" factory-bean="processEngine"
-          factory-method="getManagementService" />
+          factory-method="getManagementService"/>
     <bean id="identityService" factory-bean="processEngine"
-          factory-method="getIdentityService" />
+          factory-method="getIdentityService"/>
 
     <!--
         Add by Yanglu 2017.10.26
         使用activiti-rest服务，需要注入formService 在FormDataResource中使用
     -->
     <bean id="formService" factory-bean="processEngine"
-          factory-method="getFormService" />
-
-
+          factory-method="getFormService"/>
 
 
     <bean id="transactionManager"
           class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="dataSource" />
+        <property name="dataSource" ref="dataSource"/>
     </bean>
 
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" >
-        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://localhost:3306/activiti?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false" />
-        <property name="username" value="activiti" />
-        <property name="password" value="activiti" />
-        <property name="defaultAutoCommit" value="false" />
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url"
+                  value="jdbc:mysql://localhost:3306/activiti?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false"/>
+        <property name="username" value="activiti"/>
+        <property name="password" value="activiti"/>
+        <property name="defaultAutoCommit" value="false"/>
     </bean>
 
 
@@ -119,7 +117,6 @@
      -->
     <bean id="RuleDelegateService1" class="com.bmsmart.service.activiti.rule.RuleDelegateService1"/>
     <bean id="RuleDelegateService2" class="com.bmsmart.service.activiti.rule.RuleDelegateService2"/>
-
 
 
 </beans>

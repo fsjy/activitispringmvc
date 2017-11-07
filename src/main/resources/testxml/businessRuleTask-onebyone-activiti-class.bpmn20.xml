@@ -10,14 +10,14 @@
 
         <businessRuleTask id="service1" name="RULE测试服务1"
                           activiti:ruleVariablesInput="title,content"
-                          activiti:class="com.bmsmart.service.activiti.rule.RuleDelegateService1">
+                          activiti:delegateExpression="${RuleDelegateService1}">
 
         </businessRuleTask>
 
         <sequenceFlow id="flow1" sourceRef="start1" targetRef="service1"></sequenceFlow>
         <businessRuleTask id="service2" name="RULE测试服务2"
                           activiti:ruleVariablesInput="title,service1"
-                          activiti:class="com.bmsmart.service.activiti.rule.RuleDelegateService2">
+                          activiti:delegateExpression="${RuleDelegateService2}">
 
         </businessRuleTask>
 
