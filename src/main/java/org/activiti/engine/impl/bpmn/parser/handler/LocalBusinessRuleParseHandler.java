@@ -1,6 +1,7 @@
 package org.activiti.engine.impl.bpmn.parser.handler;
 
 import org.activiti.bpmn.model.BaseElement;
+import org.activiti.bpmn.model.BusinessRuleTask;
 import org.activiti.bpmn.model.ImplementationType;
 import org.activiti.bpmn.model.LocalBusinessRuleTask;
 import org.activiti.engine.impl.bpmn.parser.BpmnParse;
@@ -19,7 +20,7 @@ public class LocalBusinessRuleParseHandler extends AbstractActivityBpmnParseHand
     }
 
     public Class<? extends BaseElement> getHandledType() {
-        return LocalBusinessRuleTask.class;
+        return BusinessRuleTask.class;
     }
 
     protected void executeParse(BpmnParse bpmnParse, LocalBusinessRuleTask localBusinessRuleTask) {
