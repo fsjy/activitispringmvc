@@ -43,10 +43,11 @@ public class LocalDefaultLocalActivityBehaviorFactory extends DefaultActivityBeh
 
         localRuleTaskDelegateExpressionBehavior.setExclude(localBusinessRuleTask.isExclude());
 
+        // 与原生处理相同
         if (localBusinessRuleTask.getResultVariableName() != null && localBusinessRuleTask.getResultVariableName().length() > 0) {
-            localRuleTaskDelegateExpressionBehavior.setResultVariable(localBusinessRuleTask.getResultVariableName());
+            localRuleTaskDelegateExpressionBehavior.setResultVariableName(localBusinessRuleTask.getResultVariableName());
         } else {
-            localRuleTaskDelegateExpressionBehavior.setResultVariable("org.activiti.engine.rules.OUTPUT");
+            localRuleTaskDelegateExpressionBehavior.setResultVariableName("org.activiti.engine.rules.OUTPUT");
         }
 
         return localRuleTaskDelegateExpressionBehavior;
