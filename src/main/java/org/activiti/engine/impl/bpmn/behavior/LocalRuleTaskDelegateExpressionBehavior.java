@@ -1,4 +1,4 @@
-package org.activiti.engine.impl.bpmn.behavior.local;
+package org.activiti.engine.impl.bpmn.behavior;
 
 import org.activiti.engine.ActivitiIllegalArgumentException;
 import org.activiti.engine.delegate.*;
@@ -76,16 +76,14 @@ public class LocalRuleTaskDelegateExpressionBehavior extends TaskActivityBehavio
                                 (BusinessRuleTaskDelegate) businessRuleTaskDelegate, execution));
 
             } else {
-                throw new ActivitiIllegalArgumentException("Delegate expression " + expression + "didn't resolve"
+                throw new ActivitiIllegalArgumentException("Delegate businessRuleTaskDelegate " + expression + "didn't resolve"
                         + BusinessRuleTaskDelegate.class + "by local logic modified by Darcular");
             }
 
 
         } else {
-
-
+            throw new ActivitiIllegalArgumentException("BusinessRuleTaskDelegate in LocalRuleTaskDelegateExpressionBehavior is null");
         }
-
 
         leave(execution);
     }

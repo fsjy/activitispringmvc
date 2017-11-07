@@ -1,4 +1,4 @@
-package org.activiti.engine.impl.bpmn.behavior.local;
+package org.activiti.engine.impl.bpmn.behavior;
 
 import org.activiti.engine.delegate.*;
 import org.activiti.engine.impl.bpmn.behavior.TaskActivityBehavior;

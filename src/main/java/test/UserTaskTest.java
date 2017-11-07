@@ -54,7 +54,7 @@ public class UserTaskTest {
 //        InputStream xmlStream = classLoader.getResourceAsStream(resource);
 //        XMLInputFactory xif= new XMLInputFactoryImpl();
 //        InputStreamReader in = new InputStreamReader(xmlStream, "UTF-8");
-//        BpmnModel bpmnModel = new BpmnXMLConverter().convertToBpmnModel(xif.createXMLStreamReader(in));
+//        BpmnModel bpmnModel = new LocalBpmnXMLConverter().convertToBpmnModel(xif.createXMLStreamReader(in));
 //
 //        return null;
 //    }
@@ -170,7 +170,7 @@ public class UserTaskTest {
 //        XMLInputFactoryImpl xif= new XMLInputFactoryImpl();
 //        InputStreamReader in = new InputStreamReader(xmlStream, "UTF-8");
 //        //XMLStreamReader xtr = xif.createXMLStreamReader(in);
-//        BpmnModel bpmnModel = new BpmnXMLConverter().convertToBpmnModel(xif.createXMLStreamReader(in));
+//        BpmnModel bpmnModel = new LocalBpmnXMLConverter().convertToBpmnModel(xif.createXMLStreamReader(in));
 
         /**
          *  使用validate 进行xml的正确性验证

@@ -2,16 +2,40 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans   http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean id="processEngineConfiguration" class="org.activiti.spring.SpringProcessEngineConfiguration">
+
+
+
+    <!-- Delete by Yanglu 2017.11.7
+    <bean id="processEngineConfiguration" class="org.activiti.spring.LocalSpringProcessEngineConfiguration">
         <property name="dataSource" ref="dataSource" />
         <property name="transactionManager" ref="transactionManager" />
+
+        -->
         <!-- true：自动建表自动升级。数据连接无问题，在datasource中设置的schema中自动建表
         2017/10/19 By Yanglu
         <property name="databaseSchemaUpdate" value="true" />
         -->
+
+    <!--
         <property name="databaseSchemaUpdate" value="false" />
         <property name="jobExecutorActivate" value="false" />
     </bean>
+    -->
+
+
+    <!-- Add by Yanglu 2017.11.7 使用自己定义的Configuration -->
+    <bean id="processEngineConfiguration" class="org.activiti.spring.LocalSpringProcessEngineConfiguration">
+    <property name="dataSource" ref="dataSource" />
+    <property name="transactionManager" ref="transactionManager" />
+        <property name="databaseSchemaUpdate" value="false" />
+        <property name="jobExecutorActivate" value="false" />
+        <property name="activityBehaviorFactory" ref="localActivityBehaviorFactory"/>
+    </bean>
+
+    <!-- Add by Yanglu 2017.11.7 注入自定义的Factory -->
+    <bean id="localActivityBehaviorFactory" class="org.activiti.engine.impl.bpmn.parser.factory.LocalDefaultLocalActivityBehaviorFactory"/>
+
+
     <bean id="objectMapper" class="com.fasterxml.jackson.databind.ObjectMapper"/>
 
     <bean id="processEngine" class="org.activiti.spring.ProcessEngineFactoryBean">
@@ -71,7 +95,9 @@
         为实现TaskService 的expression的返回值写法
         声明本地的Service 目的是配合 activiti:resultVariable="localServiceResult">
     -->
+    <!-- Delete by Yanglu 2017.11.7 一时删除 修改不要
     <bean id="crfServiceResolver" class="com.bmsmart.service.local.impl.LocalTaskServiceImpl"/>
+    -->
 
 
     <!--

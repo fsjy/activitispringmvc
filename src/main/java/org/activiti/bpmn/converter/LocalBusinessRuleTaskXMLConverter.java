@@ -13,9 +13,7 @@
 package org.activiti.bpmn.converter;
 
 import org.activiti.bpmn.converter.util.BpmnXMLUtil;
-import org.activiti.bpmn.model.BaseElement;
-import org.activiti.bpmn.model.BpmnModel;
-import org.activiti.bpmn.model.BusinessRuleTask;
+import org.activiti.bpmn.model.*;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.xml.stream.XMLStreamReader;
@@ -24,7 +22,7 @@ import javax.xml.stream.XMLStreamWriter;
 /**
  * @author Tijs Rademakers
  */
-public class BusinessRuleTaskXMLConverter extends BaseBpmnXMLConverter {
+public class LocalBusinessRuleTaskXMLConverter extends BaseBpmnXMLConverter {
 
     public Class<? extends BaseElement> getBpmnElementType() {
         return BusinessRuleTask.class;
@@ -37,22 +35,27 @@ public class BusinessRuleTaskXMLConverter extends BaseBpmnXMLConverter {
 
     @Override
     protected BaseElement convertXMLToElement(XMLStreamReader xtr, BpmnModel model) throws Exception {
-        BusinessRuleTask businessRuleTask = new BusinessRuleTask();
-        BpmnXMLUtil.addXMLLocation(businessRuleTask, xtr);
+        LocalBusinessRuleTask localBusinessRuleTask = new LocalBusinessRuleTask();
+        BpmnXMLUtil.addXMLLocation(localBusinessRuleTask, xtr);
 
         // Add by Yanglu 2017.11.3 增加对implement的读取支持
-        businessRuleTask.setImplementation(xtr.getAttributeValue(ACTIVITI_EXTENSIONS_NAMESPACE, ATTRIBUTE_TASK_SERVICE_DELEGATEEXPRESSION));
+        // Modified by Yanglu 2017.11.7 需要动态判断是Class模式还是DelegateExpression模式 参考 代码{link ServiceTaskParseHandler}
+        // 增加对DelegateExpression Type的追加 如果是Class Type以及Rule Type维持原有逻辑不变
+        if (StringUtils.isNotEmpty(xtr.getAttributeValue(ACTIVITI_EXTENSIONS_NAMESPACE, ATTRIBUTE_TASK_SERVICE_DELEGATEEXPRESSION))) {
+            localBusinessRuleTask.setImplementationType(ImplementationType.IMPLEMENTATION_TYPE_DELEGATEEXPRESSION);
+            localBusinessRuleTask.setImplementation(xtr.getAttributeValue(ACTIVITI_EXTENSIONS_NAMESPACE, ATTRIBUTE_TASK_SERVICE_DELEGATEEXPRESSION));
+        }
 
-        businessRuleTask.setInputVariables(parseDelimitedList(xtr.getAttributeValue(ACTIVITI_EXTENSIONS_NAMESPACE, ATTRIBUTE_TASK_RULE_VARIABLES_INPUT)));
-        businessRuleTask.setRuleNames(parseDelimitedList(xtr.getAttributeValue(ACTIVITI_EXTENSIONS_NAMESPACE, ATTRIBUTE_TASK_RULE_RULES)));
-        businessRuleTask.setResultVariableName(xtr.getAttributeValue(ACTIVITI_EXTENSIONS_NAMESPACE, ATTRIBUTE_TASK_RULE_RESULT_VARIABLE));
-        businessRuleTask.setClassName(xtr.getAttributeValue(ACTIVITI_EXTENSIONS_NAMESPACE, ATTRIBUTE_TASK_RULE_CLASS));
+        localBusinessRuleTask.setInputVariables(parseDelimitedList(xtr.getAttributeValue(ACTIVITI_EXTENSIONS_NAMESPACE, ATTRIBUTE_TASK_RULE_VARIABLES_INPUT)));
+        localBusinessRuleTask.setRuleNames(parseDelimitedList(xtr.getAttributeValue(ACTIVITI_EXTENSIONS_NAMESPACE, ATTRIBUTE_TASK_RULE_RULES)));
+        localBusinessRuleTask.setResultVariableName(xtr.getAttributeValue(ACTIVITI_EXTENSIONS_NAMESPACE, ATTRIBUTE_TASK_RULE_RESULT_VARIABLE));
+        localBusinessRuleTask.setClassName(xtr.getAttributeValue(ACTIVITI_EXTENSIONS_NAMESPACE, ATTRIBUTE_TASK_RULE_CLASS));
         String exclude = xtr.getAttributeValue(ACTIVITI_EXTENSIONS_NAMESPACE, ATTRIBUTE_TASK_RULE_EXCLUDE);
         if (ATTRIBUTE_VALUE_TRUE.equalsIgnoreCase(exclude)) {
-            businessRuleTask.setExclude(true);
+            localBusinessRuleTask.setExclude(true);
         }
-        parseChildElements(getXMLElementName(), businessRuleTask, model, xtr);
-        return businessRuleTask;
+        parseChildElements(getXMLElementName(), localBusinessRuleTask, model, xtr);
+        return localBusinessRuleTask;
     }
 
     @Override
