@@ -11,7 +11,7 @@
 
     <properties>
         <jdk.version>1.8</jdk.version>
-        <spring.version>4.1.4.RELEASE</spring.version>
+        <spring.version>4.3.8.RELEASE</spring.version>
         <activiti.version>5.22.0</activiti.version>
         <jstl.version>1.2</jstl.version>
     </properties>
@@ -24,31 +24,6 @@
       <scope>test</scope>
     </dependency>
 
-    <!-- Spring  -->
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-core</artifactId>
-      <version>${spring.version}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-web</artifactId>
-      <version>${spring.version}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-webmvc</artifactId>
-      <version>${spring.version}</version>
-    </dependency>
-
-      <!-- JSTL for views -->
-      <dependency>
-          <groupId>javax.servlet</groupId>
-          <artifactId>jstl</artifactId>
-          <version>${jstl.version}</version>
-      </dependency>
 
       <!-- bmsmart Dependency -->
       <dependency>
@@ -66,21 +41,6 @@
                   <groupId>commons-dbcp</groupId>
               </exclusion>
           </exclusions>
-      </dependency>
-      <dependency>
-          <groupId>commons-dbcp</groupId>
-          <artifactId>commons-dbcp</artifactId>
-          <version>1.4</version>
-      </dependency>
-      <dependency>
-          <groupId>org.mybatis</groupId>
-          <artifactId>mybatis</artifactId>
-          <version>3.2.5</version>
-      </dependency>
-      <dependency>
-          <groupId>javax.activation</groupId>
-          <artifactId>activation</artifactId>
-          <version>1.1</version>
       </dependency>
       <dependency>
           <groupId>org.activiti</groupId>
@@ -132,17 +92,81 @@
           <artifactId>activiti-modeler</artifactId>
           <version>${activiti.version}</version>
       </dependency>
+
+      <!--
       <dependency>
           <groupId>org.activiti</groupId>
           <artifactId>activiti-simple-workflow</artifactId>
           <version>${activiti.version}</version>
       </dependency>
+      -->
 
       <!--　■ 检查Web使用的内容是否在rest中 Added by Yanglu 2017／10／19 ■ -->
       <dependency>
           <groupId>org.activiti</groupId>
           <artifactId>activiti-rest</artifactId>
           <version>${activiti.version}</version>
+      </dependency>
+
+
+
+      <!-- Spring  -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-core</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-web</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
+
+      <dependency>
+          <groupId>com.fasterxml.jackson.core</groupId>
+          <artifactId>jackson-databind</artifactId>
+          <version>2.6.5</version>
+      </dependency>
+
+      <dependency>
+          <groupId>com.fasterxml.jackson.core</groupId>
+          <artifactId>jackson-core</artifactId>
+          <version>2.6.5</version>
+      </dependency>
+
+
+      <!-- JSTL for views -->
+      <dependency>
+          <groupId>javax.servlet</groupId>
+          <artifactId>jstl</artifactId>
+          <version>${jstl.version}</version>
+      </dependency>
+
+
+
+
+      <dependency>
+          <groupId>commons-dbcp</groupId>
+          <artifactId>commons-dbcp</artifactId>
+          <version>1.4</version>
+      </dependency>
+      <dependency>
+          <groupId>org.mybatis</groupId>
+          <artifactId>mybatis</artifactId>
+          <version>3.2.5</version>
+      </dependency>
+      <dependency>
+          <groupId>javax.activation</groupId>
+          <artifactId>activation</artifactId>
+          <version>1.1</version>
       </dependency>
 
 
@@ -154,22 +178,27 @@
       </dependency>
 
 
-
+<!--
       <dependency>
           <groupId>org.vaadin.addons</groupId>
           <artifactId>dcharts-widget</artifactId>
           <version>0.10.0</version>
       </dependency>
+      -->
       <dependency>
           <groupId>org.activiti</groupId>
           <artifactId>activiti-process-validation</artifactId>
           <version>${activiti.version}</version>
       </dependency>
+
+
+      <!--
       <dependency>
           <groupId>org.apache.xmlgraphics</groupId>
           <artifactId>xmlgraphics-commons</artifactId>
           <version>1.2</version>
       </dependency>
+      -->
       <dependency>
           <groupId>com.vaadin</groupId>
           <artifactId>vaadin</artifactId>
@@ -204,6 +233,7 @@
           <version>5.1.34</version>
       </dependency>
 
+      <!--
       <dependency>
           <groupId>org.apache.xmlgraphics</groupId>
           <artifactId>batik-transcoder</artifactId>
@@ -299,7 +329,7 @@
           <artifactId>xmlgraphics-commons</artifactId>
           <version>1.2</version>
       </dependency>
-
+-->
       <!--
       <dependency>
           <groupId>batik</groupId>
